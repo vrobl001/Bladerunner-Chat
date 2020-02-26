@@ -9,6 +9,7 @@ async function signup(req, res) {
         const user = await User.create(req.body);
         res.json(user);
     } catch (error) {
+        console.log(error);
         res.status(400).json(error);
     }
 }
