@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './SignupForm/module.css';
+import styles from './SignupForm.module.css';
 
 class SignupForm extends Component {
     state = {
