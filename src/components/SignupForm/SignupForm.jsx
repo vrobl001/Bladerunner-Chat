@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import styles from './SignupForm.module.css';
 
 class SignupForm extends Component {
-    state = {
-        name: '',
-        email: '',
-        password: '',
-        passwordConf: ''
-    };
+    state = this.getInitialState();
+
+    getInitialState() {
+        return {
+            name: '',
+            email: '',
+            password: '',
+            passwordConf: ''
+        };
+    }
 
     handleChange = e => {
         this.setState({
@@ -17,6 +21,7 @@ class SignupForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        this.setState(this.getInitialState());
     };
 
     render() {
