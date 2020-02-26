@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 
 // Page components
 import Home from './pages/Home/Home';
+import ChatRooms from './pages/ChatRooms/ChatRooms';
 
 import './App.css';
 
@@ -16,7 +17,12 @@ function App() {
             <Navbar />
             <div className='App-inner-container'>
                 <Switch>
-                    <Route path='/' render={props => <Home />} />
+                    <Route exact path='/' render={props => <Home />} />
+                    <Route
+                        exact
+                        path='/chatrooms'
+                        render={props => <ChatRooms />}
+                    />
                 </Switch>
             </div>
             <Footer />
