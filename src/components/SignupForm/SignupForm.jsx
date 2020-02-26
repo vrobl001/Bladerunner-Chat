@@ -7,17 +7,25 @@ class SignupForm extends Component {
         password: '',
         passwordConf: ''
     };
+
+    handleChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    };
+
     render() {
         return (
             <form>
                 <fieldset>
-                    <legends>Signup Form</legends>
+                    <legend>Signup Form</legend>
                     <label htmlFor='name'>Full Name</label>
                     <input
                         id='name'
                         name='name'
                         type='text'
                         value={this.state.name}
+                        onChange={this.handleChange}
                     />
 
                     <label htmlFor='email'>Email</label>
@@ -26,6 +34,7 @@ class SignupForm extends Component {
                         name='email'
                         type='email'
                         value={this.state.email}
+                        onChange={this.handleChange}
                     />
 
                     <label htmlFor='password'>Password</label>
@@ -34,6 +43,7 @@ class SignupForm extends Component {
                         name='password'
                         type='password'
                         value={this.state.password}
+                        onChange={this.handleChange}
                     />
 
                     <label htmlFor='passwordConf'>Password Confirmation</label>
@@ -42,6 +52,7 @@ class SignupForm extends Component {
                         name='passwordConf'
                         type='password'
                         value={this.state.passwordConf}
+                        onChange={this.handleChange}
                     />
 
                     <button type='submit'>Submit</button>
