@@ -17,7 +17,7 @@ class SignupForm extends Component {
 
     render() {
         return (
-            <form>
+            <form className={styles.form}>
                 <fieldset>
                     <legend>Signup Form</legend>
                     <label htmlFor='name'>Full Name</label>
