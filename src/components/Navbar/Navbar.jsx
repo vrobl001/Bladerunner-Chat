@@ -3,7 +3,7 @@ import styles from './Navbar.module.css';
 
 const Navbar = props => {
     return (
-        <nav>
+        <nav className={styles.navbar}>
             <h1>Blade Runner Chat</h1>
             <ul>
                 <li>Chat Rooms</li>
