@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
 const Navbar = props => {
     return (
         <nav className={styles.navbar}>
-            <h1>Blade Runner Chat</h1>
+            <Link to='/'>
+                <h1>Blade Runner Chat</h1>
+            </Link>
             <ul>
-                <li>Chat Rooms</li>
+                <li>
+                    <Link to='/chatrooms'>Chat Rooms</Link>
+                </li>
                 <li>Login</li>
                 <li>Signup</li>
             </ul>
