@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    background-color: darkblue;
+    justify-content: space-around;
+    color: white;
+    box-shadow: 2px 2px 7px 2px lightgray;
+}
+
+.navbar h1 {
+    font-family: 'Orbitron';
+    font-size: 2rem;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    font-weight: 500;
+    margin: 1rem;
+}
+
+.navbar ul li:hover {
+    border-bottom: 2px solid gray;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+}
