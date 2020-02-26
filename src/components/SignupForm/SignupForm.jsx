@@ -15,9 +15,13 @@ class SignupForm extends Component {
         });
     };
 
+    handleSubmit = e => {
+        e.preventDefault();
+    };
+
     render() {
         return (
-            <form className={styles.form}>
+            <form onSubmit={this.handleSubmit} className={styles.form}>
                 <fieldset>
                     <legend>Signup Form</legend>
                     <label htmlFor='name'>Full Name</label>
