@@ -37,8 +37,7 @@ class SignupForm extends Component {
             const { name, email, password } = this.state;
             await userService.signup({ name, email, password });
             this.setState(this.getInitialState(), () => {
-                // redirect to chatrooms later
-                alert('user signed up!');
+                this.props.history.push('/');
             });
         } catch (error) {}
     };
