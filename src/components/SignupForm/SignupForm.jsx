@@ -13,6 +13,14 @@ class SignupForm extends Component {
         };
     }
 
+    isFormValid = () => {
+        return (
+            this.state.name &&
+            this.state.email &&
+            this.state.password === this.state.passwordConf
+        );
+    };
+
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -21,6 +29,8 @@ class SignupForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        if (!this.isFormValid()) return;
+        alert('form submitted');
         this.setState(this.getInitialState());
     };
 
@@ -65,7 +75,9 @@ class SignupForm extends Component {
                         onChange={this.handleChange}
                     />
 
-                    <button type='submit'>Submit</button>
+                    <button disabled={!this.isFormValid()} type='submit'>
+                        Submit
+                    </button>
                 </fieldset>
             </form>
         );
