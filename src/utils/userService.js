@@ -13,7 +13,7 @@ function signup(user) {
                 throw new Error('Email Already Taken!');
             }
         })
-        .then(data => console.log(data));
+        .then(({ token }) => tokenService.setToken(token));
 }
 
 export default {
