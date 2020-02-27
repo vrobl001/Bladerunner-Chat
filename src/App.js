@@ -26,7 +26,11 @@ function App() {
                         render={props => <ChatRooms />}
                     />
                     <Route exact path='/login' render={props => <Login />} />
-                    <Route exact path='/signup' render={props => <Signup />} />
+                    <Route
+                        exact
+                        path='/signup'
+                        render={props => <Signup {...props} />}
+                    />
                 </Switch>
             </div>
             <Footer />
