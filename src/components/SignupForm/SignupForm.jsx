@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import userService from '../../utils/userService';
 import styles from './SignupForm.module.css';
 
 class SignupForm extends Component {
@@ -17,6 +18,7 @@ class SignupForm extends Component {
         return (
             this.state.name &&
             this.state.email &&
+            this.state.password &&
             this.state.password === this.state.passwordConf
         );
     };
@@ -27,11 +29,18 @@ class SignupForm extends Component {
         });
     };
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
         if (!this.isFormValid()) return;
-        alert('form submitted');
-        this.setState(this.getInitialState());
+
+        try {
+            const { name, email, password } = this.state;
+            await userService.signup({ name, email, password });
+            this.setState(this.getInitialState(), () => {
+                // redirect to chatrooms later
+                alert('user signed up!');
+            });
+        } catch (error) {}
     };
 
     render() {
