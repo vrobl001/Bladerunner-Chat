@@ -34,7 +34,13 @@ class LoginForm extends Component {
                 this.props.handleSignupOrLogin();
                 this.props.history.push('/chatrooms');
             });
-        } catch (error) {}
+        } catch (error) {
+            this.setState({
+                email: '',
+                password: '',
+                error: error.message
+            });
+        }
     };
 
     render() {
