@@ -31,7 +31,7 @@ class App extends Component {
     render() {
         return (
             <div className='App-outer-container'>
-                <Navbar />
+                <Navbar handleLogout={this.handleLogout} />
                 <div className='App-inner-container'>
                     <Switch>
                         <Route exact path='/' render={props => <Home />} />
