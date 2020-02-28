@@ -11,7 +11,9 @@ const Navbar = props => {
                 <Link to='/chatrooms'>Chat Rooms</Link>
             </li>
             <li>
-                <Link>Logout</Link>
+                <Link to='' onClick={props.handleLogout}>
+                    Logout
+                </Link>
             </li>
         </>
     ) : (
