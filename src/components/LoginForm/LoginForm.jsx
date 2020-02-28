@@ -12,7 +12,7 @@ class LoginForm extends Component {
         };
     }
 
-    ifFormValid = () => {
+    isFormValid = () => {
         return this.state.email && this.state.password;
     };
 
@@ -50,7 +50,9 @@ class LoginForm extends Component {
                         onChange={this.handleChange}
                     />
 
-                    <button type='submit'>Login</button>
+                    <button disabled={!this.isFormValid()} type='submit'>
+                        Login
+                    </button>
                 </fieldset>
             </form>
         );
