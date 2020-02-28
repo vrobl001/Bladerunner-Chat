@@ -45,8 +45,8 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <section>
-                <form onSubmit={this.handleSubmit} className={styles.form}>
+            <section className={styles.sections}>
+                <form onSubmit={this.handleSubmit}>
                     <fieldset>
                         <legend>Login</legend>
                         <label htmlFor='email'>Email</label>
