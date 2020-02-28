@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import userService from '../../utils/userService';
+
 import styles from './LoginForm.module.css';
 
 class LoginForm extends Component {
