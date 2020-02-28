@@ -23,6 +23,11 @@ class App extends Component {
         this.setState({ user: userService.getUser() });
     };
 
+    handleLogout = () => {
+        userService.logout();
+        this.setState({ user: null });
+    };
+
     render() {
         return (
             <div className='App-outer-container'>
