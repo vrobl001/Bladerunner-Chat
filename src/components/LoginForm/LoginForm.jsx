@@ -20,6 +20,7 @@ class LoginForm extends Component {
 
     handleChange = e => {
         this.setState({
+            error: '',
             [e.target.name]: e.target.value
         });
     };
