@@ -15,9 +15,15 @@ async function login(req, res) {
             if (isMatch) {
                 const token = createJWT(user);
                 res.json({ token });
+            } else {
+                return res.status(401).json({ err: 'bad credentials' });
             }
         });
-    } catch (error) {}
+    } catch (error) {
+        res.status(500).json({
+            err: 'this request cannot be completed at this time'
+        });
+    }
 }
 
 async function signup(req, res) {
@@ -26,7 +32,6 @@ async function signup(req, res) {
         const token = createJWT(user);
         res.json({ token });
     } catch (error) {
-        console.log(error);
         res.status(400).json(error);
     }
 }
