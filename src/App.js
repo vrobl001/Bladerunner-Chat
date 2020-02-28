@@ -53,6 +53,7 @@ class App extends Component {
                             path='/login'
                             render={props => (
                                 <Login
+                                    {...props}
                                     handleSignupOrLogin={
                                         this.handleSignupOrLogin
                                     }
