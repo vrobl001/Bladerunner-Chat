@@ -40,7 +40,7 @@ class App extends Component {
                             exact
                             path='/chatrooms'
                             render={props =>
-                                userService.getUser() ? (
+                                this.state.user ? (
                                     <ChatRooms />
                                 ) : (
                                     <Redirect to='/login' />
