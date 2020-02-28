@@ -24,3 +24,13 @@
     font-weight: 600;
     font-size: 1.25rem;
 }
+
+.section button:disabled {
+    background-color: gray;
+}
+
+.section p {
+    color: red;
+    font-weight: 700;
+    text-align: center;
+}
