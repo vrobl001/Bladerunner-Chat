@@ -7,9 +7,14 @@ class LoginForm extends Component {
     getInitialState() {
         return {
             email: '',
-            password: ''
+            password: '',
+            error: ''
         };
     }
+
+    ifFormValid = () => {
+        return this.state.email && this.state.password;
+    };
 
     handleChange = e => {
         this.setState({
