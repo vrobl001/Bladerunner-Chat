@@ -24,10 +24,14 @@ class LoginForm extends Component {
         });
     };
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
         if (!this.isFormValid()) return;
-        this.setState(this.getInitialState());
+        try {
+            const { email, password } = this.state;
+            await userService.login({ email, password });
+            this.setState(this.getInitialState());
+        } catch (error) {}
     };
 
     render() {
