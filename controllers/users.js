@@ -3,8 +3,16 @@ const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
 module.exports = {
-    signup
+    signup,
+    login
 };
+
+async function login(req, res) {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        if (!user) return res.status(400).json({ err: 'bad credentials' });
+    } catch (error) {}
+}
 
 async function signup(req, res) {
     try {
