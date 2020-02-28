@@ -1,5 +1,5 @@
 function removeToken() {
-    localStorage.removeToken();
+    localStorage.removeItem('token');
 }
 
 function getToken() {
