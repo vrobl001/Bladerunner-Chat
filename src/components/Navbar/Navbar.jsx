@@ -28,7 +28,7 @@ const Navbar = props => {
             <Link to='/'>
                 <h1>Blade Runner Chat</h1>
             </Link>
-            <ul></ul>
+            <ul>{conditionalUI}</ul>
         </nav>
     );
 };
