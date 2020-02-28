@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 // Reusable components
 import Navbar from './components/Navbar/Navbar';
@@ -39,7 +39,13 @@ class App extends Component {
                         <Route
                             exact
                             path='/chatrooms'
-                            render={props => <ChatRooms />}
+                            render={props =>
+                                userService.getUser() ? (
+                                    <ChatRooms />
+                                ) : (
+                                    <Redirect to='/login' />
+                                )
+                            }
                         />
 
                         <Route
