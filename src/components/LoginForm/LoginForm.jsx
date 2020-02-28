@@ -30,7 +30,10 @@ class LoginForm extends Component {
         try {
             const { email, password } = this.state;
             await userService.login({ email, password });
-            this.setState(this.getInitialState());
+            this.setState(this.getInitialState(), () => {
+                this.props.handleSignupOrLogin();
+                this.props.history.push('/chatrooms');
+            });
         } catch (error) {}
     };
 
