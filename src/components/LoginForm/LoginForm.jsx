@@ -46,6 +46,7 @@ class LoginForm extends Component {
     render() {
         return (
             <section className={styles.sections}>
+                {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.handleSubmit}>
                     <fieldset>
                         <legend>Login</legend>
