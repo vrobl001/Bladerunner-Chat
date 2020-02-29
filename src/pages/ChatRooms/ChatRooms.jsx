@@ -7,11 +7,13 @@ import styles from './ChatRooms';
 
 const ChatRooms = props => {
     return (
-        <main className={styles.container}>
-            <ChatTopics />
-            <ReadMessages />
-            <WriteMessages />
-        </main>
+        <>
+            <div className={styles.container}>
+                <ChatTopics />
+                <ReadMessages />
+                <WriteMessages />
+            </div>
+        </>
     );
 };
 
