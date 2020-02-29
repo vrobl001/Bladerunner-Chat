@@ -1,0 +1,34 @@
+.chatNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background-color: lightgray;
+    justify-content: space-around;
+    color: white;
+    box-shadow: 2px 2px 7px 2px lightgray;
+}
+
+.chatNav h1 {
+    font-family: 'Orbitron';
+    font-size: 2rem;
+}
+
+.chatNav ul {
+    display: flex;
+    list-style: none;
+}
+
+.chatNav ul li {
+    font-weight: 500;
+    margin: 1rem;
+}
+
+.chatNav ul li:hover {
+    border-bottom: 2px solid gray;
+}
+
+.chatNav a {
+    text-decoration: none;
+    color: white;
+}
