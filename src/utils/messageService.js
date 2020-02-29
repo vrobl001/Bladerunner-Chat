@@ -1,6 +1,6 @@
 const BASE_URL = '/api/messages/';
 
-function sendChat(message) {
+function sendMessages(message) {
     return fetch(BASE_URL + 'chatrooms', {
         method: 'POST',
         headers: new Headers({ 'Content-type': 'Application/json' }),
@@ -15,5 +15,5 @@ function sendChat(message) {
 }
 
 export default {
-    sendChat
+    sendMessages
 };

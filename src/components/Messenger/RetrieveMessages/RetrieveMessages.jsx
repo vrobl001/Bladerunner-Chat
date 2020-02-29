@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './ReadMessages.module.css';
+import styles from './RetrieveMessages.module.css';
 
-const ReadMessages = props => {
+const RetrieveMessages = props => {
     return (
         <div className={styles.rmContainer}>
             <h1>Some chat messages</h1>
@@ -9,4 +9,4 @@ const ReadMessages = props => {
     );
 };
 
-export default ReadMessages;
+export default RetrieveMessages;

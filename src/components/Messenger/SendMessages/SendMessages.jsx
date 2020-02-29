@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import messageService from '../../../utils/messageService';
-import styles from './WriteMessages.module.css';
+import styles from './SendMessages.module.css';
 
-class WriteMessages extends Component {
+class SendMessages extends Component {
     state = this.getInitialState();
     getInitialState() {
         return {
-            chatTopic: 'Test Topic',
+            chatTopic: 'New Test Topic',
             name: 'Vincent',
             msg: ''
         };
@@ -27,7 +27,7 @@ class WriteMessages extends Component {
         if (!this.isMessageValid()) return;
         try {
             const { chatTopic, name, msg } = this.state;
-            await messageService.sendChat({ chatTopic, name, msg });
+            await messageService.sendMessages({ chatTopic, name, msg });
             this.setState(this.getInitialState());
         } catch (error) {
             this.setState({
@@ -60,4 +60,4 @@ class WriteMessages extends Component {
     }
 }
 
-export default WriteMessages;
+export default SendMessages;

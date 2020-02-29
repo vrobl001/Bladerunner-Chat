@@ -1,7 +1,7 @@
 import React from 'react';
 import ChatTopics from '../../components/Messenger/ChatTopics/ChatTopics';
-import ReadMessages from '../../components/Messenger/ReadMessages/ReadMessages';
-import WriteMessages from '../../components/Messenger/WriteMessages/WriteMessages';
+import RetrieveMessages from '../../components/Messenger/RetrieveMessages/RetrieveMessages';
+import SendMessages from '../../components/Messenger/SendMessages/SendMessages';
 import OnlineUsers from '../../components/Messenger/OnlineUsers/OnlineUsers';
 
 import styles from './ChatRooms.module.css';
@@ -12,9 +12,10 @@ const ChatRooms = props => {
             <ChatTopics />
 
             <div className={styles.msgrContainer}>
-                <ReadMessages />
-                <WriteMessages />
+                <RetrieveMessages />
+                <SendMessages />
             </div>
+
             <OnlineUsers />
         </div>
     );
