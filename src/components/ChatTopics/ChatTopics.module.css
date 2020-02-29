@@ -1,34 +1,29 @@
 .chatNav {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 100%;
-    background-color: lightgray;
-    justify-content: space-around;
-    color: white;
-    box-shadow: 2px 2px 7px 2px lightgray;
-}
 
-.chatNav h1 {
-    font-family: 'Orbitron';
-    font-size: 2rem;
+    height: 100%;
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    box-shadow: 2px 5px 10px 0px black;
 }
 
 .chatNav ul {
-    display: flex;
-    list-style: none;
+    margin: 0.5rem;
+    padding: 0.5rem;
 }
 
 .chatNav ul li {
-    font-weight: 500;
-    margin: 1rem;
+    font-family: 'Orbitron';
+    font-size: 1.5rem;
+    list-style: none;
+    margin-top: 2rem;
+    text-align: start;
+    border-bottom: 0.1rem solid darkgray;
 }
 
 .chatNav ul li:hover {
-    border-bottom: 2px solid gray;
-}
-
-.chatNav a {
-    text-decoration: none;
-    color: white;
+    border-bottom: 0.2rem solid white;
+    cursor: pointer;
 }
