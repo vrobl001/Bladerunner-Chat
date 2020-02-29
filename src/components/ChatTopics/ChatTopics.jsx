@@ -3,7 +3,7 @@ import styles from './ChatTopics.module.css';
 
 const ChatTopics = props => {
     return (
-        <nav className={styles.chatNav}>
+        <div className={styles.chatNav}>
             <ul>
                 <li>General</li>
                 <li>Lessons</li>
@@ -11,7 +11,7 @@ const ChatTopics = props => {
                 <li>Non-Deliverables</li>
                 <li>Projects</li>
             </ul>
-        </nav>
+        </div>
     );
 };
 

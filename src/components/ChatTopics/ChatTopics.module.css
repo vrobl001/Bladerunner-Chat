@@ -1,9 +1,7 @@
 .chatNav {
     display: flex;
-    flex-direction: column;
-
     height: 100%;
-    width: 50%;
+    width: 15rem;
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
     box-shadow: 2px 5px 10px 0px black;
