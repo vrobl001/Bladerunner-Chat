@@ -1,0 +1,7 @@
+.rmContainer {
+    display: flex;
+    justify-content: center;
+    height: 75%;
+    width: 100%;
+    background-color: green;
+}

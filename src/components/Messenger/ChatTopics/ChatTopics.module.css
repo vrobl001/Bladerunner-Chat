@@ -1,0 +1,27 @@
+.chatNav {
+    display: flex;
+    height: 100%;
+    width: 15rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    box-shadow: 2px 5px 10px 0px black;
+}
+
+.chatNav ul {
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.chatNav ul li {
+    font-family: 'Orbitron';
+    font-size: 1.5rem;
+    list-style: none;
+    margin-top: 2rem;
+    text-align: start;
+    border-bottom: 0.1rem solid darkgray;
+}
+
+.chatNav ul li:hover {
+    border-bottom: 0.2rem solid white;
+    cursor: pointer;
+}

@@ -1,7 +1,8 @@
 import React from 'react';
-import ChatTopics from '../../components/ChatTopics/ChatTopics';
-import ReadMessages from '../../components/ReadMessages/ReadMessages';
-import WriteMessages from '../../components/WriteMessages/WriteMessages';
+import ChatTopics from '../../components/Messenger/ChatTopics/ChatTopics';
+import ReadMessages from '../../components/Messenger/ReadMessages/ReadMessages';
+import WriteMessages from '../../components/Messenger/WriteMessages/WriteMessages';
+import OnlineUsers from '../../components/Messenger/OnlineUsers/OnlineUsers';
 
 import styles from './ChatRooms.module.css';
 
@@ -14,6 +15,7 @@ const ChatRooms = props => {
                 <ReadMessages />
                 <WriteMessages />
             </div>
+            <OnlineUsers />
         </div>
     );
 };
