@@ -27,7 +27,13 @@ class RetrieveMessages extends Component {
         ));
         return (
             <div className={styles.rmContainer}>
-                <table>{allMessages}</table>
+                {this.state.messages.length ? (
+                    <table className={styles.table}>
+                        <tbody>{allMessages}</tbody>
+                    </table>
+                ) : (
+                    <h4 className='text-info'>Messages Yet</h4>
+                )}
             </div>
         );
     }
