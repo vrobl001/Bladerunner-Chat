@@ -1,36 +1,27 @@
 import React, { Component } from 'react';
 import messageServices from '../../../utils/messageService';
 import styles from './RetrieveMessages.module.css';
-import ChatTopics from '../ChatTopics/ChatTopics';
 
 class RetrieveMessages extends Component {
-    state = {
-        messages: []
-    };
-
-    handleUpdateMessages = messages => {
-        this.setState({ messages });
-    };
-
     async componentDidMount() {
         const retrieveMessages = await messageServices.retrieveMessages();
-        this.handleUpdateMessages(retrieveMessages);
+        this.props.handleUpdateMessages(retrieveMessages);
     }
     render() {
-        const allMessages = this.state.messages.map((message, idx) => (
+        const allMessages = this.props.messages.map((message, idx) => (
             <tr key={idx}>
-                <td>{idx + 1}</td>
+                <td>{message.name}</td>
                 <td>{message.msg}</td>
             </tr>
         ));
         return (
             <div className={styles.rmContainer}>
-                {this.state.messages.length ? (
+                {this.props.messages.length ? (
                     <table className={styles.table}>
                         <tbody>{allMessages}</tbody>
                     </table>
                 ) : (
-                    <h4 className='text-info'>Messages Yet</h4>
+                    <h4 className='text-info'>No Messages Yet!</h4>
                 )}
             </div>
         );
