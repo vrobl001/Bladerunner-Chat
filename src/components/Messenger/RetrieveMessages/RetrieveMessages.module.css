@@ -1,7 +1,9 @@
 .rmContainer {
     display: flex;
     justify-content: center;
-    height: 75%;
+    height: 40rem;
     width: 100%;
     background-color: green;
+    overflow: auto;
+    flex-direction: column-reverse;
 }

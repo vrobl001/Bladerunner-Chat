@@ -16,7 +16,8 @@ import userService from './utils/userService';
 
 class App extends Component {
     state = {
-        user: userService.getUser()
+        user: userService.getUser(),
+        messages: []
     };
 
     handleSignupOrLogin = () => {
@@ -26,6 +27,10 @@ class App extends Component {
     handleLogout = () => {
         userService.logout();
         this.setState({ user: null });
+    };
+
+    handleUpdateMessages = messages => {
+        this.setState({ messages });
     };
 
     render() {
@@ -41,7 +46,12 @@ class App extends Component {
                             path='/chatrooms'
                             render={props =>
                                 this.state.user ? (
-                                    <ChatRooms />
+                                    <ChatRooms
+                                        messages={this.state.messages}
+                                        handleUpdateMessages={
+                                            this.handleUpdateMessages
+                                        }
+                                    />
                                 ) : (
                                     <Redirect to='/login' />
                                 )

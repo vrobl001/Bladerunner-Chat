@@ -16,10 +16,6 @@ async function sendMessages(req, res) {
 }
 
 async function retrieveMessages(req, res) {
-    console.log('message retrieved!');
-    try {
-        const messages = await Message.find({});
-        console.log(messages);
-        return messages;
-    } catch (error) {}
+    const messages = await Message.find({});
+    res.json(messages);
 }

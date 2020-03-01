@@ -9,14 +9,14 @@ import styles from './ChatRooms.module.css';
 const ChatRooms = props => {
     return (
         <div className={styles.crContainer}>
-            <ChatTopics />
+            <ChatTopics {...props} />
 
             <div className={styles.msgrContainer}>
-                <RetrieveMessages />
-                <SendMessages />
+                <RetrieveMessages {...props} />
+                <SendMessages {...props} />
             </div>
 
-            <OnlineUsers />
+            <OnlineUsers {...props} />
         </div>
     );
 };
