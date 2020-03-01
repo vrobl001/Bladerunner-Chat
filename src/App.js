@@ -47,6 +47,7 @@ class App extends Component {
                             render={props =>
                                 this.state.user ? (
                                     <ChatRooms
+                                        user={this.state.user}
                                         messages={this.state.messages}
                                         handleUpdateMessages={
                                             this.handleUpdateMessages
