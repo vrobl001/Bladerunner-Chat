@@ -5,7 +5,7 @@ const OnlineUsers = props => {
     return (
         <div className={styles.ouContainer}>
             <ul>
-                <li>ted</li>
+                <li>{props.user.name}</li>
                 <li>brian</li>
                 <li>crystal</li>
                 <li>lina</li>
