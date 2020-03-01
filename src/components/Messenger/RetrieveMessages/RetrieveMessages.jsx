@@ -19,9 +19,7 @@ class RetrieveMessages extends Component {
     render() {
         const allMessages = this.state.messages.map((message, idx) => (
             <tr key={idx}>
-                <td>
-                    <span>{idx + 1}</span>
-                </td>
+                <td>{idx + 1}</td>
                 <td>{message.msg}</td>
             </tr>
         ));
