@@ -14,10 +14,6 @@ class SendMessages extends Component {
         };
     }
 
-    sendSocketIO(messages) {
-        socket.emit('sendMessages', messages);
-    }
-
     isMessageValid = () => {
         return this.state.chatTopic && this.state.name && this.state.msg;
     };
@@ -35,7 +31,7 @@ class SendMessages extends Component {
             const { chatTopic, name, msg } = this.state;
             await messageService.sendMessages({ chatTopic, name, msg });
             const retrieveMessages = await messageService.retrieveMessages();
-            this.sendSocketIO(retrieveMessages);
+            socket.emit('sendMessages', retrieveMessages);
             this.setState(this.getInitialState());
         } catch (error) {
             this.setState({
