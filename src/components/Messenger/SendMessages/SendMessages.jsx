@@ -33,8 +33,9 @@ class SendMessages extends Component {
         if (!this.isMessageValid()) return;
         try {
             const { chatTopic, name, msg } = this.state;
-            this.sendSocketIO(this.state);
             await messageService.sendMessages({ chatTopic, name, msg });
+            const retrieveMessages = await messageService.retrieveMessages();
+            this.sendSocketIO(retrieveMessages);
             this.setState(this.getInitialState());
         } catch (error) {
             this.setState({

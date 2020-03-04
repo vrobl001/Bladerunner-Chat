@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import messageServices from '../../../utils/messageService';
+import messageService from '../../../utils/messageService';
 import styles from './RetrieveMessages.module.css';
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:4000');
@@ -11,17 +11,10 @@ class RetrieveMessages extends Component {
         msg: ''
     };
     async componentDidMount() {
-        console.log('retrieve message props ', this.props);
-        const retrieveMessages = await messageServices.retrieveMessages();
-        console.log('await retrieved messages', retrieveMessages);
+        const retrieveMessages = await messageService.retrieveMessages();
         this.props.handleUpdateMessages(retrieveMessages);
         socket.on('sendMessages', data => {
-            this.setState({
-                chatTopic: data.chatTopic,
-                name: data.name,
-                msg: data.msg
-            });
-            console.log('retrieveMessages ', retrieveMessages);
+            this.props.handleUpdateMessages(data);
         });
     }
 
