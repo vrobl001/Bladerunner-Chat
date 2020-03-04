@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import messageService from './utils/messageService';
 
 // Reusable components
 import Navbar from './components/Navbar/Navbar';
@@ -14,9 +15,30 @@ import Signup from './pages/Signup/Signup';
 import './App.css';
 import userService from './utils/userService';
 
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:4000');
+
 class App extends Component {
-    state = {
-        user: userService.getUser()
+    state = this.getInitialState();
+
+    getInitialState() {
+        return {
+            user: userService.getUser(),
+            messages: []
+        };
+    }
+
+    async componentDidMount() {
+        const allMessages = await messageService.retrieveMessages();
+        this.handleLoadMessages(allMessages);
+        socket.on('sendMessages', data => {
+            this.test(data);
+        });
+    }
+
+    test = message => {
+        const messagesCopy = [...this.state.messages, message];
+        this.setState({ messages: messagesCopy });
     };
 
     handleSignupOrLogin = () => {
@@ -26,6 +48,10 @@ class App extends Component {
     handleLogout = () => {
         userService.logout();
         this.setState({ user: null });
+    };
+
+    handleLoadMessages = messages => {
+        this.setState({ messages });
     };
 
     render() {
@@ -41,7 +67,13 @@ class App extends Component {
                             path='/chatrooms'
                             render={props =>
                                 this.state.user ? (
-                                    <ChatRooms />
+                                    <ChatRooms
+                                        user={this.state.user}
+                                        messages={this.state.messages}
+                                        handleUpdateMessages={
+                                            this.handleUpdateMessages
+                                        }
+                                    />
                                 ) : (
                                     <Redirect to='/login' />
                                 )
