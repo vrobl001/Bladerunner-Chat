@@ -1,4 +1,14 @@
 .wrContainer {
     display: flex;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(235, 235, 235);
+}
+
+button,
+input {
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }

@@ -30,12 +30,16 @@ class App extends Component {
 
     async componentDidMount() {
         const allMessages = await messageService.retrieveMessages();
-        this.handleUpdateMessages(allMessages);
+        this.handleLoadMessages(allMessages);
         socket.on('sendMessages', data => {
-            console.log('app socket', data);
-            this.handleUpdateMessages(data);
+            this.test(data);
         });
     }
+
+    test = message => {
+        const messagesCopy = [...this.state.messages, message];
+        this.setState({ messages: messagesCopy });
+    };
 
     handleSignupOrLogin = () => {
         this.setState({ user: userService.getUser() });
@@ -46,7 +50,7 @@ class App extends Component {
         this.setState({ user: null });
     };
 
-    handleUpdateMessages = messages => {
+    handleLoadMessages = messages => {
         this.setState({ messages });
     };
 
