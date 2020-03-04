@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import messageService from './utils/messageService';
 
 // Reusable components
 import Navbar from './components/Navbar/Navbar';
@@ -14,11 +15,27 @@ import Signup from './pages/Signup/Signup';
 import './App.css';
 import userService from './utils/userService';
 
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:4000');
+
 class App extends Component {
-    state = {
-        user: userService.getUser(),
-        messages: []
-    };
+    state = this.getInitialState();
+
+    getInitialState() {
+        return {
+            user: userService.getUser(),
+            messages: []
+        };
+    }
+
+    async componentDidMount() {
+        const allMessages = await messageService.retrieveMessages();
+        this.handleUpdateMessages(allMessages);
+        socket.on('sendMessages', data => {
+            console.log('app socket', data);
+            this.handleUpdateMessages(data);
+        });
+    }
 
     handleSignupOrLogin = () => {
         this.setState({ user: userService.getUser() });
