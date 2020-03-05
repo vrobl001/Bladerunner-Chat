@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import messageService from '../../../utils/messageService';
 import styles from './SendMessages.module.css';
 import openSocket from 'socket.io-client';
-import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 const socket = openSocket('http://localhost:4000');
 
 class SendMessages extends Component {
@@ -44,26 +44,20 @@ class SendMessages extends Component {
 
     render() {
         return (
-            <div className={styles.wrContainer}>
-                <form onSubmit={this.handleSubmit}>
+            <Paper elevation={10}>
+                <form
+                    className={styles.wrContainer}
+                    onSubmit={this.handleSubmit}
+                >
                     <input
-                        placeholder='type here...'
                         id='msg'
                         name='msg'
                         type='text'
                         value={this.state.msg}
                         onChange={this.handleChange}
                     />
-                    <Button
-                        variant='contained'
-                        color='primary'
-                        disabled={!this.isMessageValid()}
-                        type='submit'
-                    >
-                        Send Message
-                    </Button>
                 </form>
-            </div>
+            </Paper>
         );
     }
 }

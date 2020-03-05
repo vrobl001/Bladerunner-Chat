@@ -32,11 +32,11 @@ class App extends Component {
         const allMessages = await messageService.retrieveMessages();
         this.handleLoadMessages(allMessages);
         socket.on('sendMessages', data => {
-            this.test(data);
+            this.handleUpdateMessages(data);
         });
     }
 
-    test = message => {
+    handleUpdateMessages = message => {
         const messagesCopy = [...this.state.messages, message];
         this.setState({ messages: messagesCopy });
     };
