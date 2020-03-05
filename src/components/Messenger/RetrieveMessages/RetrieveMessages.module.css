@@ -8,6 +8,6 @@
     flex-direction: column-reverse;
 }
 
-table {
+.rmContainer table {
     margin: 5px;
 }
