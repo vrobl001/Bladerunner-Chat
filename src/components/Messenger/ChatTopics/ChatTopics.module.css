@@ -1,7 +1,15 @@
 .chatNav {
     display: flex;
     width: 15rem;
-    background-color: rgba(0, 0, 0, 0.9);
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(13, 13, 13, 1) 28%,
+        rgba(41, 41, 41, 1) 78%,
+        rgba(64, 64, 64, 1) 96%,
+        rgba(80, 80, 80, 1) 100%
+    );
     color: white;
     box-shadow: 2px 5px 10px 0px black;
 }
