@@ -7,8 +7,7 @@
         rgba(0, 0, 0, 1) 0%,
         rgba(13, 13, 13, 1) 28%,
         rgba(41, 41, 41, 1) 78%,
-        rgba(64, 64, 64, 1) 96%,
-        rgba(80, 80, 80, 1) 100%
+        rgba(64, 64, 64, 1) 100%
     );
     color: white;
     box-shadow: 2px 5px 10px 0px black;

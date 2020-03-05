@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from '../../logo.svg';
 import styles from './Home.module.css';
-import Paper from '@material-ui/core/Paper';
 
 const Home = props => {
     return (

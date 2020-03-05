@@ -1,0 +1,62 @@
+.reactLogo {
+    height: 30rem;
+    pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .reactLogo {
+        animation: spin infinite 20s linear;
+    }
+}
+
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+        164deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(3, 0, 25, 1) 35%,
+        rgba(7, 0, 57, 1) 75%,
+        rgba(9, 0, 74, 1) 81%,
+        rgba(13, 0, 112, 1) 94%,
+        rgba(20, 0, 176, 1) 100%
+    );
+    width: 70%;
+    height: 90%;
+    box-shadow: 2px 2px 15px 10px gray;
+}
+
+.homeContainer h1,
+h3 {
+    pointer-events: none;
+    text-align: center;
+    color: white;
+    font-family: 'Orbitron';
+}
+
+.homeContainer h1 {
+    font-size: 3.25rem;
+}
+
+.homeContainer h3 {
+    font-size: 1.5rem;
+    text-align: end;
+}
+
+.homeMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -44,11 +44,8 @@ class SendMessages extends Component {
 
     render() {
         return (
-            <Paper elevation={10}>
-                <form
-                    className={styles.wrContainer}
-                    onSubmit={this.handleSubmit}
-                >
+            <Paper className={styles.wrContainer} elevation={10}>
+                <form onSubmit={this.handleSubmit}>
                     <input
                         id='msg'
                         name='msg'

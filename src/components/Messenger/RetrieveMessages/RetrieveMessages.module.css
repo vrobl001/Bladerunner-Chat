@@ -3,11 +3,17 @@
     height: 40rem;
     width: 100%;
     outline: 1px solid gray;
-    background-color: white;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+        164deg,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(3, 0, 25, 0.75) 35%,
+        rgba(7, 0, 57, 0.75) 75%,
+        rgba(9, 0, 74, 0.75) 81%,
+        rgba(13, 0, 112, 0.75) 94%,
+        rgba(21, 0, 176, 0.75) 100%
+    );
     overflow-y: auto;
     flex-direction: column-reverse;
-}
-
-.rmContainer table {
-    margin: 5px;
+    color: white;
 }
