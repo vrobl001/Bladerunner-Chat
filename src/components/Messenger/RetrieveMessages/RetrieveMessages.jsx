@@ -9,7 +9,7 @@ const RetrieveMessages = props => {
         </tr>
     ));
     return (
-        <div className={styles.rmContainer} id='containsMessages'>
+        <div className={styles.rmContainer}>
             {props.messages.length ? (
                 <table className={styles.table}>
                     <tbody>{allMessages}</tbody>

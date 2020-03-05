@@ -12,7 +12,7 @@ const ChatRooms = props => {
             <ChatTopics {...props} />
 
             <div className={styles.msgrContainer}>
-                <Paper elevation={3}>
+                <Paper elevation={10}>
                     <RetrieveMessages {...props} />
                     <SendMessages {...props} />
                 </Paper>

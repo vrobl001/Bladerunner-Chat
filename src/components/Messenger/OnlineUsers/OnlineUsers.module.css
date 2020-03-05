@@ -1,4 +1,12 @@
 .ouContainer {
-    background-color: aqua;
-    width: 15rem;
+    display: flex;
+    width: 20rem;
+    height: 40rem;
+}
+
+.ouInnerContainer {
+    margin: auto;
+    width: 90%;
+    height: 30rem;
+    overflow-y: auto;
 }
