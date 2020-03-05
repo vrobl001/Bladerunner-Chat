@@ -18,8 +18,6 @@ const userSchema = new Schema(
     { timestamps: true }
 );
 
-<<<<<<< HEAD
-=======
 userSchema.methods.comparePassword = function(tryPassword, callback) {
     bcrypt.compare(tryPassword, this.password, callback);
 };
@@ -33,7 +31,6 @@ userSchema.set('toJSON', {
     }
 });
 
->>>>>>> development
 userSchema.pre('save', function(next) {
     const user = this;
     if (!user.isModified('password')) return next();
