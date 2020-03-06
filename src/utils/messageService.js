@@ -25,7 +25,13 @@ function retrieveMessages() {
             'Content-type': 'Application/json',
             Authorization: 'Bearer ' + tokenService.getToken()
         }
-    }).then(res => res.json());
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('could not retrieve message');
+        }
+    });
 }
 
 export default {
