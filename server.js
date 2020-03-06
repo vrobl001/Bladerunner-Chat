@@ -37,6 +37,7 @@ app.use(serveFavicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/users', require('./routes/api/users'));
+app.use(require('./config/auth'));
 app.use('/api/messages', require('./routes/api/messages'));
 
 app.get('/*', function(req, res) {
