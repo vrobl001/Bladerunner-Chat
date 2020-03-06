@@ -9,7 +9,7 @@ class SendMessages extends Component {
     state = this.getInitialState();
     getInitialState() {
         return {
-            name: 'Vincent',
+            name: this.props.user.name,
             msg: ''
         };
     }
