@@ -4,14 +4,15 @@
     display: flex;
     height: 40rem;
     background: rgb(0, 0, 0);
+    background: rgb(0, 0, 0);
     background: linear-gradient(
-        164deg,
+        180deg,
         rgba(0, 0, 0, 0.8) 0%,
-        rgba(3, 0, 25, 0.7) 35%,
-        rgba(7, 0, 57, 0.7) 75%,
-        rgba(9, 0, 74, 0.7) 81%,
-        rgba(13, 0, 112, 0.7) 94%,
-        rgba(21, 0, 176, 0.5) 100%
+        rgba(3, 0, 25, 0.8) 35%,
+        rgba(7, 0, 57, 0.8) 75%,
+        rgba(9, 0, 74, 0.8) 81%,
+        rgba(13, 0, 112, 0.8) 94%,
+        rgba(20, 0, 176, 0.8) 100%
     );
     overflow-y: auto;
     flex-direction: column-reverse;
@@ -20,15 +21,17 @@
 .displayedMessages {
     border-radius: 5px;
     box-shadow: 2px 5px 10px 0px black;
-    height: 100%;
     width: 40%;
-
     background-color: rgba(255, 255, 255, 0.9);
     flex-direction: column;
-    margin: 0.5rem;
+    margin: 1rem;
+
+    padding: 0;
 }
 
 .rmChatTopic {
+    box-shadow: inset 0 0 1.5px white;
+    margin: 0;
     color: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -37,10 +40,11 @@
     justify-content: center;
     display: flex;
     background-color: black;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 .rmMessage {
+    margin: 5px;
     overflow: hidden;
     width: 80%;
     font-family: 'Roboto', 'san-serif';
@@ -52,12 +56,42 @@
 .rmUser {
     display: block;
     font-family: 'Orbitron';
-
     font-weight: bold;
-    padding-left: 0.4rem;
-    padding-right: 0.4rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
-.test {
+.nameAndMessage {
     display: flex;
+}
+
+.userContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.noMessage {
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', 'san-serif';
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 3px white;
+    size: 10px;
+    background: rgb(10, 10, 10);
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(20, 20, 20);
 }
