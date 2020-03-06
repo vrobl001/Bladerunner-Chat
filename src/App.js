@@ -24,7 +24,7 @@ class App extends Component {
     getInitialState() {
         return {
             user: userService.getUser(),
-            chatTopic: 'General',
+            chatTopic: 'All Chat',
             messages: [],
             filteredMessages: [],
             online: [{ name: 'Crystal' }, { name: 'Brian' }, { name: 'Lina' }]

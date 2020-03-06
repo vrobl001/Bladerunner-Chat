@@ -5,7 +5,7 @@ const ChatTopics = props => {
     return (
         <div className={styles.chatNav}>
             <ul>
-                <li onClick={props.handleUpdateChatTopic}>General</li>
+                <li onClick={props.handleUpdateChatTopic}>All Chat</li>
                 <li onClick={props.handleUpdateChatTopic}>Lessons</li>
                 <li onClick={props.handleUpdateChatTopic}>Deliverables</li>
                 <li onClick={props.handleUpdateChatTopic}>Non-Deliverables</li>
