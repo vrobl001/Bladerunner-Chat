@@ -50,7 +50,12 @@ class LoginForm extends Component {
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.handleSubmit}>
                     <fieldset>
-                        <legend>Login</legend>
+                        {!this.isFormValid() ? (
+                            <legend>Login</legend>
+                        ) : (
+                            <legend className={styles.isValid}>Login</legend>
+                        )}
+
                         <label htmlFor='email'>Email</label>
                         <input
                             id='email'
