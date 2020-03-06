@@ -5,11 +5,11 @@ const ChatTopics = props => {
     return (
         <div className={styles.chatNav}>
             <ul>
-                <li>General</li>
-                <li>Lessons</li>
-                <li>Deliverables</li>
-                <li>Non-Deliverables</li>
-                <li>Projects</li>
+                <li onClick={props.handleUpdateChatTopic}>General</li>
+                <li onClick={props.handleUpdateChatTopic}>Lessons</li>
+                <li onClick={props.handleUpdateChatTopic}>Deliverables</li>
+                <li onClick={props.handleUpdateChatTopic}>Non-Deliverables</li>
+                <li onClick={props.handleUpdateChatTopic}>Projects</li>
             </ul>
         </div>
     );

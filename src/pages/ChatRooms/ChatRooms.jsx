@@ -8,10 +8,10 @@ import Paper from '@material-ui/core/Paper';
 
 const ChatRooms = props => {
     return (
-        <div className={styles.crContainer}>
+        <div className={styles.crOuterContainer}>
             <ChatTopics {...props} />
 
-            <div className={styles.msgrContainer}>
+            <div className={styles.crInnerContainer}>
                 <Paper elevation={10}>
                     <RetrieveMessages {...props} />
                     <SendMessages {...props} />

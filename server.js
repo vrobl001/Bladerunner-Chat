@@ -11,7 +11,7 @@ const io = require('socket.io')(http);
 io.on('connection', socket => {
     socket.on('newUser', user => {
         console.log('this person is logged on ', user);
-        socket.broadcast.emit('newUser', user);
+        io.emit('newUser', user);
     });
 
     socket.on('disconnect', () => {

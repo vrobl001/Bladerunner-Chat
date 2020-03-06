@@ -9,14 +9,19 @@ class SendMessages extends Component {
     state = this.getInitialState();
     getInitialState() {
         return {
-            chatTopic: 'New Test Topic',
             name: 'Vincent',
             msg: ''
         };
     }
 
+    componentDidMount() {
+        socket.on('sendMessages', data => {
+            console.log(data);
+        });
+    }
+
     isMessageValid = () => {
-        return this.state.chatTopic && this.state.name && this.state.msg;
+        return this.state.name && this.state.msg;
     };
 
     handleChange = e => {
@@ -29,9 +34,10 @@ class SendMessages extends Component {
         e.preventDefault();
         if (!this.isMessageValid()) return;
         try {
-            const { chatTopic, name, msg } = this.state;
+            const { name, msg } = this.state;
+            const chatTopic = this.props.chatTopic;
+            socket.emit('sendMessages', { name, msg, chatTopic });
             await messageService.sendMessages({ chatTopic, name, msg });
-            socket.emit('sendMessages', this.state);
             this.setState(this.getInitialState());
         } catch (error) {
             this.setState({
@@ -44,11 +50,8 @@ class SendMessages extends Component {
 
     render() {
         return (
-            <Paper elevation={10}>
-                <form
-                    className={styles.wrContainer}
-                    onSubmit={this.handleSubmit}
-                >
+            <Paper className={styles.wrContainer} elevation={10}>
+                <form onSubmit={this.handleSubmit}>
                     <input
                         id='msg'
                         name='msg'
