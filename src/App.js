@@ -34,7 +34,7 @@ class App extends Component {
     async componentDidMount() {
         if (userService.getUser()) {
             const allMessages = await messageService.retrieveMessages();
-            this.handleLoadMessages(allMessages);
+            this.setState({ messages: allMessages });
         }
         socket.on('sendMessages', data => {
             this.handleUpdateMessages(data);
