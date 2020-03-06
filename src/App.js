@@ -31,11 +31,8 @@ class App extends Component {
         };
     }
 
-    async componentDidMount() {
-        if (userService.getUser()) {
-            const allMessages = await messageService.retrieveMessages();
-            this.setState({ messages: allMessages });
-        }
+    componentDidMount() {
+        this.handleGetMessages();
         socket.on('sendMessages', data => {
             this.handleUpdateMessages(data);
         });
@@ -45,6 +42,13 @@ class App extends Component {
         //     this.handleLoggedInUsers(data);
         // });
     }
+
+    handleGetMessages = async () => {
+        if (userService.getUser()) {
+            const allMessages = await messageService.retrieveMessages();
+            this.setState({ messages: allMessages });
+        }
+    };
 
     handleUpdateChatTopic = selectedTopic => {
         this.setState({
@@ -68,7 +72,12 @@ class App extends Component {
 
     handleLogout = () => {
         userService.logout();
-        this.setState({ user: null });
+        this.setState({
+            user: userService.getUser(),
+            chatTopic: 'All Chat',
+            messages: [],
+            filteredMessages: []
+        });
     };
 
     handleLoadMessages = messages => {
@@ -115,6 +124,7 @@ class App extends Component {
                             render={props => (
                                 <Login
                                     {...props}
+                                    handleGetMessages={this.handleGetMessages}
                                     handleSignupOrLogin={
                                         this.handleSignupOrLogin
                                     }

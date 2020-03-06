@@ -1,30 +1,51 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import styles from './RetrieveMessages.module.css';
 
 const RetrieveMessages = props => {
     const filteredMessages = props.messages.filter(message => {
         return message.chatTopic === props.chatTopic;
     });
-    const mappedFilteredMessages = filteredMessages.map((message, idx) => (
-        <tr key={idx}>
-            <Paper className={styles.displayedMessages}>
-                <div>
-                    <td className={styles.rmChatTopic}>{message.chatTopic}</td>
+    const mappedFilteredMessages = filteredMessages.map((message, idx) =>
+        props.user.name === message.name ? (
+            <div className={styles.userContainer} key={idx}>
+                <div className={styles.displayedMessages}>
+                    <div>
+                        <p className={styles.rmChatTopic}>
+                            {message.chatTopic}
+                        </p>
+                    </div>
+                    <div className={styles.nameAndMessage}>
+                        <p className={styles.rmUser}>{message.name}</p>
+                        <p className={styles.rmMessage}>{message.msg}</p>
+                    </div>
                 </div>
-                <td className={styles.rmUser}>{message.name}</td>
-                <td className={styles.rmMessage}>{message.msg}</td>
-            </Paper>
-        </tr>
-    ));
+            </div>
+        ) : (
+            <div key={idx}>
+                <div className={styles.displayedMessages}>
+                    <div>
+                        <p className={styles.rmChatTopic}>
+                            {message.chatTopic}
+                        </p>
+                    </div>
+                    <div className={styles.nameAndMessage}>
+                        <p className={styles.rmUser}>{message.name}</p>
+                        <p className={styles.rmMessage}>{message.msg}</p>
+                    </div>
+                </div>
+            </div>
+        )
+    );
     return (
         <div className={styles.rmContainer}>
             {filteredMessages.length ? (
-                <table>
-                    <tbody>{mappedFilteredMessages}</tbody>
-                </table>
+                <div>
+                    <div>{mappedFilteredMessages}</div>
+                </div>
             ) : (
-                <h1>No Messages Yet!</h1>
+                <h1 className={styles.noMessage}>
+                    Be the first to start a conversation!
+                </h1>
             )}
         </div>
     );

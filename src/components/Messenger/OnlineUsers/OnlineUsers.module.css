@@ -9,4 +9,5 @@
     width: 90%;
     height: 30rem;
     overflow-y: auto;
+    overflow-x: hidden;
 }
