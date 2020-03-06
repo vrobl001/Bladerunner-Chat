@@ -1,4 +1,5 @@
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
 import styles from './RetrieveMessages.module.css';
 
 const RetrieveMessages = props => {
@@ -7,15 +8,19 @@ const RetrieveMessages = props => {
     });
     const mappedFilteredMessages = filteredMessages.map((message, idx) => (
         <tr key={idx}>
-            <td>{message.chatTopic}</td>
-            <td>{message.name}</td>
-            <td>{message.msg}</td>
+            <Paper className={styles.displayedMessages}>
+                <div>
+                    <td className={styles.rmChatTopic}>{message.chatTopic}</td>
+                </div>
+                <td className={styles.rmUser}>{message.name}</td>
+                <td className={styles.rmMessage}>{message.msg}</td>
+            </Paper>
         </tr>
     ));
     return (
         <div className={styles.rmContainer}>
             {filteredMessages.length ? (
-                <table className={styles.table}>
+                <table>
                     <tbody>{mappedFilteredMessages}</tbody>
                 </table>
             ) : (

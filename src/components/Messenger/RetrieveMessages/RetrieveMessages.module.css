@@ -17,3 +17,28 @@
     flex-direction: column-reverse;
     color: white;
 }
+
+.displayedMessages {
+    width: 45%;
+    margin: 0.5rem;
+}
+
+.rmMessage {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-left: 1px solid gray;
+}
+
+.rmChatTopic {
+    justify-content: center;
+    display: flex;
+    background-color: black;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.rmUser {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
