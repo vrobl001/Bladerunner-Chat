@@ -15,9 +15,6 @@ import Signup from './pages/Signup/Signup';
 import './App.css';
 import userService from './utils/userService';
 
-import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:9000');
-
 class App extends Component {
     state = this.getInitialState();
 
@@ -36,6 +33,7 @@ class App extends Component {
         socket.on('sendMessages', data => {
             this.handleUpdateMessages(data);
         });
+ master
     }
 
     handleGetMessages = async () => {

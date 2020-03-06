@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import messageService from '../../../utils/messageService';
 import styles from './SendMessages.module.css';
-import openSocket from 'socket.io-client';
+
 import Paper from '@material-ui/core/Paper';
-const socket = openSocket('http://localhost:9000');
 
 class SendMessages extends Component {
     state = this.getInitialState();
@@ -12,12 +11,6 @@ class SendMessages extends Component {
             name: this.props.user.name,
             msg: ''
         };
-    }
-
-    componentDidMount() {
-        socket.on('sendMessages', data => {
-            console.log(data);
-        });
     }
 
     isMessageValid = () => {
@@ -36,7 +29,7 @@ class SendMessages extends Component {
         try {
             const { name, msg } = this.state;
             const chatTopic = this.props.chatTopic;
-            socket.emit('sendMessages', { name, msg, chatTopic });
+
             await messageService.sendMessages({ chatTopic, name, msg });
             this.setState(this.getInitialState());
         } catch (error) {
