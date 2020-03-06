@@ -34,7 +34,7 @@ class App extends Component {
     async componentDidMount() {
         if (userService.getUser()) {
             const allMessages = await messageService.retrieveMessages();
-            this.handleLoadMessages(allMessages);
+            this.setState({ messages: allMessages });
         }
         socket.on('sendMessages', data => {
             this.handleUpdateMessages(data);
@@ -68,7 +68,12 @@ class App extends Component {
 
     handleLogout = () => {
         userService.logout();
-        this.setState({ user: null });
+        this.setState({
+            user: userService.getUser(),
+            chatTopic: 'All Chat',
+            messages: [],
+            filteredMessages: []
+        });
     };
 
     handleLoadMessages = messages => {
