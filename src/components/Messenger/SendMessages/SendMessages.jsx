@@ -9,14 +9,13 @@ class SendMessages extends Component {
     state = this.getInitialState();
     getInitialState() {
         return {
-            chatTopic: 'New Test Topic',
             name: 'Vincent',
             msg: ''
         };
     }
 
     isMessageValid = () => {
-        return this.state.chatTopic && this.state.name && this.state.msg;
+        return this.state.name && this.state.msg;
     };
 
     handleChange = e => {
@@ -29,7 +28,8 @@ class SendMessages extends Component {
         e.preventDefault();
         if (!this.isMessageValid()) return;
         try {
-            const { chatTopic, name, msg } = this.state;
+            const { name, msg } = this.state;
+            const chatTopic = this.props.chatTopic;
             await messageService.sendMessages({ chatTopic, name, msg });
             socket.emit('sendMessages', this.state);
             this.setState(this.getInitialState());

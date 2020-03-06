@@ -24,7 +24,9 @@ class App extends Component {
     getInitialState() {
         return {
             user: userService.getUser(),
-            messages: []
+            chatTopic: 'General',
+            messages: [],
+            online: [{ name: 'Crystal' }, { name: 'Brian' }, { name: 'Lina' }]
         };
     }
 
@@ -34,7 +36,23 @@ class App extends Component {
         socket.on('sendMessages', data => {
             this.handleUpdateMessages(data);
         });
+
+        // socket.emit('newUser', this.state.user);
+        // socket.on('newUser', data => {
+        //     this.handleLoggedInUsers(data);
+        // });
     }
+
+    handleUpdateChatTopic = selectedTopic => {
+        this.setState({
+            chatTopic: selectedTopic.target.innerText
+        });
+    };
+
+    handleLoggedInUsers = userName => {
+        const onlineCopy = [...this.state.online, userName];
+        this.setState({ online: onlineCopy });
+    };
 
     handleUpdateMessages = message => {
         const messagesCopy = [...this.state.messages, message];
@@ -68,6 +86,11 @@ class App extends Component {
                             render={props =>
                                 this.state.user ? (
                                     <ChatRooms
+                                        chatTopic={this.state.chatTopic}
+                                        handleUpdateChatTopic={
+                                            this.handleUpdateChatTopic
+                                        }
+                                        online={this.state.online}
                                         user={this.state.user}
                                         messages={this.state.messages}
                                         handleUpdateMessages={
