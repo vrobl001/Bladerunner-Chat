@@ -19,8 +19,7 @@ async function login(req, res) {
                 return res.status(401).json({ err: 'ho' });
             }
         });
-    } catch (error) {
-        console.log(error);
+    } catch (err) {
         res.status(500).json({
             err: 'this request cannot be completed at this time'
         });
@@ -32,8 +31,8 @@ async function signup(req, res) {
         const user = await User.create(req.body);
         const token = createJWT(user);
         res.json({ token });
-    } catch (error) {
-        res.status(400).json(error);
+    } catch (err) {
+        res.status(400).json(err);
     }
 }
 
