@@ -22,6 +22,7 @@ function retrieveMessages() {
     return fetch(BASE_URL, {
         method: 'GET',
         headers: {
+            'Content-type': 'Application/json',
             Authorization: 'Bearer ' + tokenService.getToken()
         }
     }).then(res => res.json());
