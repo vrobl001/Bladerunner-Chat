@@ -33,7 +33,6 @@ class LoginForm extends Component {
             await userService.login({ email, password });
             this.setState(this.getInitialState(), () => {
                 this.props.handleSignupOrLogin();
-                this.props.handleGetMessages();
                 this.props.history.push('/chatrooms');
             });
         } catch (error) {
