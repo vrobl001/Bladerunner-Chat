@@ -1,5 +1,5 @@
 .reactLogo {
-    height: 30rem;
+    height: 25rem;
     pointer-events: none;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -8,7 +8,7 @@
     }
 }
 
-.homeContainer {
+.homeContent {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,12 +23,12 @@
         rgba(13, 0, 112, 1) 94%,
         rgba(20, 0, 176, 1) 100%
     );
-    width: 70%;
-    height: 90%;
+    width: 75rem;
+
     box-shadow: 2px 2px 15px 10px gray;
 }
 
-.homeContainer h1,
+.homeContent h1,
 h3 {
     pointer-events: none;
     text-align: center;
@@ -36,20 +36,21 @@ h3 {
     font-family: 'Orbitron';
 }
 
-.homeContainer h1 {
+.homeContent h1 {
     font-size: 3.25rem;
 }
 
-.homeContainer h3 {
+.homeContent h3 {
     font-size: 1.5rem;
     text-align: end;
 }
 
-.homeMain {
+.homeContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    height: 100%;
 }
 
 @keyframes spin {
