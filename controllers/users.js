@@ -10,13 +10,13 @@ module.exports = {
 async function login(req, res) {
     try {
         const user = await User.findOne({ email: req.body.email });
-        if (!user) return res.status(400).json({ err: 'hey' });
+        if (!user) return res.status(400).json({ err: 'bad credentials' });
         user.comparePassword(req.body.password, (err, isMatch) => {
             if (isMatch) {
                 const token = createJWT(user);
                 res.json({ token });
             } else {
-                return res.status(401).json({ err: 'ho' });
+                return res.status(401).json({ err: 'bad credentials' });
             }
         });
     } catch (error) {
