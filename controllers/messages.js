@@ -10,11 +10,11 @@ async function sendMessages(req, res) {
         const message = await Message.create(req.body);
         res.json({ message });
     } catch (error) {
-        res.status(400).json("can't send message");
+        res.status(400).json(error);
     }
 }
 
 async function retrieveMessages(req, res) {
     const messages = await Message.find({});
-    res.json("can't retrieve message");
+    res.json(messages);
 }

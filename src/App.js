@@ -25,13 +25,7 @@ class App extends Component {
         return {
             user: userService.getUser(),
             chatTopic: 'General',
-            messages: [
-                {
-                    chatTopic: 'General',
-                    name: 'Blade Runner Chat',
-                    msg: 'Welcome to Blade Runner Chat!'
-                }
-            ],
+            messages: [],
             filteredMessages: [],
             online: [{ name: 'Crystal' }, { name: 'Brian' }, { name: 'Lina' }]
         };
