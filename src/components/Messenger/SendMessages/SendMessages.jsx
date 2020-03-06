@@ -14,6 +14,12 @@ class SendMessages extends Component {
         };
     }
 
+    componentDidMount() {
+        socket.on('sendMessages', data => {
+            console.log(data);
+        });
+    }
+
     isMessageValid = () => {
         return this.state.name && this.state.msg;
     };
@@ -30,8 +36,8 @@ class SendMessages extends Component {
         try {
             const { name, msg } = this.state;
             const chatTopic = this.props.chatTopic;
+            socket.emit('sendMessages', { name, msg, chatTopic });
             await messageService.sendMessages({ chatTopic, name, msg });
-            socket.emit('sendMessages', this.state);
             this.setState(this.getInitialState());
         } catch (error) {
             this.setState({

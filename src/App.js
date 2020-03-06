@@ -25,7 +25,14 @@ class App extends Component {
         return {
             user: userService.getUser(),
             chatTopic: 'General',
-            messages: [],
+            messages: [
+                {
+                    chatTopic: 'General',
+                    name: 'Blade Runner Chat',
+                    msg: 'Welcome to Blade Runner Chat!'
+                }
+            ],
+            filteredMessages: [],
             online: [{ name: 'Crystal' }, { name: 'Brian' }, { name: 'Lina' }]
         };
     }
@@ -86,6 +93,9 @@ class App extends Component {
                             render={props =>
                                 this.state.user ? (
                                     <ChatRooms
+                                        filteredMessages={
+                                            this.state.filteredMessages
+                                        }
                                         chatTopic={this.state.chatTopic}
                                         handleUpdateChatTopic={
                                             this.handleUpdateChatTopic
