@@ -16,7 +16,7 @@ import './App.css';
 import userService from './utils/userService';
 
 import openSocket from 'socket.io-client';
-const socket = openSocket();
+const socket = openSocket('http://localhost:4000');
 
 class App extends Component {
     state = this.getInitialState();

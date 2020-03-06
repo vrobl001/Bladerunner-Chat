@@ -3,7 +3,7 @@ import messageService from '../../../utils/messageService';
 import styles from './SendMessages.module.css';
 import openSocket from 'socket.io-client';
 import Paper from '@material-ui/core/Paper';
-const socket = openSocket();
+const socket = openSocket('http://localhost:4000');
 
 class SendMessages extends Component {
     state = this.getInitialState();
