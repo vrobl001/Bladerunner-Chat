@@ -36,11 +36,6 @@ class App extends Component {
         socket.on('sendMessages', data => {
             this.handleUpdateMessages(data);
         });
-
-        // socket.emit('newUser', this.state.user);
-        // socket.on('newUser', data => {
-        //     this.handleLoggedInUsers(data);
-        // });
     }
 
     handleGetMessages = async () => {
