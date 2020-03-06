@@ -5,28 +5,6 @@ const path = require('path');
 
 const app = express();
 
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
-
-io.on('connection', socket => {
-    socket.on('newUser', user => {
-        console.log('this person is logged on ', user);
-        io.emit('newUser', user);
-    });
-
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
-    });
-
-    socket.on('sendMessages', messages => {
-        io.emit('sendMessages', messages);
-    });
-});
-
-http.listen(9000, () => {
-    console.log('Socket.io is listening on port 4000');
-});
-
 require('dotenv').config();
 require('./config/database');
 
