@@ -59,7 +59,13 @@ class SignupForm extends Component {
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.handleSubmit}>
                     <fieldset>
-                        <legend>Signup Form</legend>
+                        {!this.isFormValid() ? (
+                            <legend>Signup Form</legend>
+                        ) : (
+                            <legend className={styles.isValid}>
+                                Signup Form
+                            </legend>
+                        )}
                         <label htmlFor='name'>Full Name</label>
                         <input
                             id='name'
