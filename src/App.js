@@ -19,24 +19,29 @@ import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:9000');
 
 class App extends Component {
-    state = this.getInitialState();
+    state = {
+        user: userService.getUser(),
+        chatTopic: 'All Chat',
+        messages: [],
+        filteredMessages: [],
+        online: [{ name: 'Crystal' }, { name: 'Brian' }, { name: 'Lina' }]
+    };
 
-    getInitialState() {
-        return {
+    handleSignupOrLogin = () => {
+        this.setState({ user: userService.getUser() }, () => {
+            this.handleGetMessages();
+        });
+    };
+
+    handleLogout = () => {
+        userService.logout();
+        this.setState({
             user: userService.getUser(),
             chatTopic: 'All Chat',
             messages: [],
-            filteredMessages: [],
-            online: [{ name: 'Crystal' }, { name: 'Brian' }, { name: 'Lina' }]
-        };
-    }
-
-    componentDidMount() {
-        this.handleGetMessages();
-        socket.on('sendMessages', data => {
-            this.handleUpdateMessages(data);
+            filteredMessages: []
         });
-    }
+    };
 
     handleGetMessages = async () => {
         if (userService.getUser()) {
@@ -44,6 +49,13 @@ class App extends Component {
             this.setState({ messages: allMessages });
         }
     };
+
+    componentDidMount() {
+        this.handleGetMessages();
+        socket.on('sendMessages', data => {
+            this.handleUpdateMessages(data);
+        });
+    }
 
     handleUpdateChatTopic = selectedTopic => {
         this.setState({
@@ -59,20 +71,6 @@ class App extends Component {
     handleUpdateMessages = message => {
         const messagesCopy = [...this.state.messages, message];
         this.setState({ messages: messagesCopy });
-    };
-
-    handleSignupOrLogin = () => {
-        this.setState({ user: userService.getUser() });
-    };
-
-    handleLogout = () => {
-        userService.logout();
-        this.setState({
-            user: userService.getUser(),
-            chatTopic: 'All Chat',
-            messages: [],
-            filteredMessages: []
-        });
     };
 
     handleLoadMessages = messages => {
