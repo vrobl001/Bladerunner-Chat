@@ -23,17 +23,14 @@ class App extends Component {
         user: userService.getUser(),
         chatTopic: 'All Chat',
         messages: [],
-        filteredMessages: [],
-        online: []
+        filteredMessages: []
     };
 
     handleSignupOrLogin = () => {
         this.setState({ user: userService.getUser() }, () => {
             this.handleGetMessages();
-            socket.emit('onlineUser', this.state.user.name);
         });
     };
-
     handleLogout = () => {
         userService.logout();
         this.setState({
@@ -72,6 +69,10 @@ class App extends Component {
         socket.on('sendMessages', message => {
             this.handleUpdateMessages(message);
         });
+
+        if (this.state.user) {
+            socket.emit('onlineUser', this.state.user);
+        }
     }
 
     componentWillUnmount() {
