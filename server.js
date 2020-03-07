@@ -22,10 +22,8 @@ io.on('connection', socket => {
     });
 });
 
-let heroku = 'https://enigmatic-dawn-95873.herokuapp.com';
-
-http.listen(heroku, () => {
-    console.log(`Socket.io is listening on port ${heroku}`);
+http.listen(80, () => {
+    console.log('Socket.io is listening on port 80');
 });
 
 require('dotenv').config();
