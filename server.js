@@ -22,6 +22,10 @@ io.on('connection', socket => {
     });
 });
 
+http.listen(5000, () => {
+    console.log('Socket.io is listening on port 5000');
+});
+
 require('dotenv').config();
 require('./config/database');
 
@@ -40,11 +44,6 @@ app.get('/*', function(req, res) {
 });
 
 const port = process.env.PORT || 3001;
-const socketPort = process.env.PORT || 80;
-
-http.listen(socketPort, () => {
-    console.log(`Socket.io is listening on port ${socketPort}`);
-});
 
 app.listen(port, function() {
     console.log(`Express is listening on port: ${port}`);
