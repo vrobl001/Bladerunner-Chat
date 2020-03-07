@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Introduction
 
-## Available Scripts
+    Welcome to Blade Runner Chat! Users will be able to sign up/ log in with authentication using bcrypt and JWT. Once on, users will be able to chat in real time using socket io! Messages will be conditionally rendered depending on what chat topic is currently selected.
 
-In the project directory, you can run:
+    Messages sent will persist to a database using MongoDB. This way, users can still engage in conversations at a later time.
 
-### `npm start`
+    Everything is presented using React!
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies Used
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+-   ### **M**ongoose
+-   ### **E**xpress
+-   ### **R**eact
+-   ### **N**ode
+-   bCrypt
+-   JWT
+-   Socket io
+-   Heroku
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   Trello Board:
+    https://trello.com/b/UwB1l4oc/code-bounty
 
-### `npm run build`
+-   GitHub Repo:
+    https://github.com/vrobl001/Bladerunner-Chat
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   Deployed Heroku:
+    https://blade-runner-chat.herokuapp.com/
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Unsolved Problems
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   Getting socket to work on Heroku
 
-### `npm run eject`
+## Future Enhancements
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+-   Display user online status
+-   Ability to send personal messages
+-   Emojis
