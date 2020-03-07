@@ -1,5 +1,4 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import styles from './OnlineUsers.module.css';
 
 const OnlineUsers = props => {
@@ -8,9 +7,14 @@ const OnlineUsers = props => {
     ));
     return (
         <div className={styles.ouContainer}>
-            <Paper elevation={10} className={styles.ouInnerContainer}>
-                <ul>{allUsers}</ul>
-            </Paper>
+            <div className={styles.ouInnerContainer}>
+                <div className={styles.onlineUsers}>
+                    <h1>Online Users</h1>
+                </div>
+                <div>
+                    <ul>{allUsers}</ul>
+                </div>
+            </div>
         </div>
     );
 };
