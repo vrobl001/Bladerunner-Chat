@@ -4,9 +4,14 @@ import styles from './AllChat.module.css';
 const AllChat = props => {
     const allMessages = props.messages.map((message, idx) => (
         <div key={idx}>
-            <div>
-                <p className={styles.chatTopic}>{message.chatTopic}</p>
-                <p>{message.name}</p>
+            <div className={styles.msgContainer}>
+                <p
+                    onClick={props.handleUpdateChatTopic}
+                    className={styles.chatTopic}
+                >
+                    {message.chatTopic}
+                </p>
+                <h5>{message.name}</h5>
                 <p>{message.msg}</p>
             </div>
         </div>

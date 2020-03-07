@@ -21,14 +21,14 @@ const socket = openSocket('http://localhost:5000');
 class App extends Component {
     state = {
         user: userService.getUser(),
-        chatTopic: 'All Chat',
+        chatTopic: 'Main',
         messages: [],
         filteredMessages: []
     };
 
     handleSignupOrLogin = () => {
         this.setState(
-            { user: userService.getUser(), chatTopic: 'All Chat' },
+            { user: userService.getUser(), chatTopic: 'Main' },
             () => {
                 this.handleGetMessages();
             }
