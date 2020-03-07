@@ -83,7 +83,7 @@ class App extends Component {
 
     handleSocket() {
         if (!socket) {
-            socket = io(':8080');
+            socket = io(':5000');
         }
     }
 
