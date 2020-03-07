@@ -24,23 +24,39 @@ class App extends Component {
         chatTopic: 'All Chat',
         messages: [],
         filteredMessages: [],
-        online: [{ name: 'Crystal' }, { name: 'Brian' }, { name: 'Lina' }]
+        online: []
     };
 
     handleSignupOrLogin = () => {
         this.setState({ user: userService.getUser() }, () => {
             this.handleGetMessages();
+            socket.emit('onlineUser', this.state.user.name);
         });
     };
 
     handleLogout = () => {
+        this.handleOfflineUser();
         userService.logout();
         this.setState({
             user: userService.getUser(),
-            chatTopic: 'All Chat',
+            chatTopic: '',
             messages: [],
             filteredMessages: []
         });
+    };
+
+    handleOnlineUser = () => {
+        const onlineUser = this.state.user;
+        const onlineUserUpdate = [...this.state.online, onlineUser];
+        this.setState({ online: onlineUserUpdate });
+    };
+
+    handleOfflineUser = () => {
+        const usersStillOn = this.state.online.filter(name => {
+            return name.name !== userService.getUser().name;
+        });
+        this.setState({ online: usersStillOn });
+        socket.emit('offlineUser', usersStillOn);
     };
 
     handleGetMessages = async () => {
@@ -50,22 +66,10 @@ class App extends Component {
         }
     };
 
-    componentDidMount() {
-        this.handleGetMessages();
-        socket.on('sendMessages', data => {
-            this.handleUpdateMessages(data);
-        });
-    }
-
     handleUpdateChatTopic = selectedTopic => {
         this.setState({
             chatTopic: selectedTopic.target.innerText
         });
-    };
-
-    handleLoggedInUsers = userName => {
-        const onlineCopy = [...this.state.online, userName];
-        this.setState({ online: onlineCopy });
     };
 
     handleUpdateMessages = message => {
@@ -76,6 +80,26 @@ class App extends Component {
     handleLoadMessages = messages => {
         this.setState({ messages });
     };
+
+    componentDidMount() {
+        this.handleGetMessages();
+
+        socket.on('sendMessages', message => {
+            this.handleUpdateMessages(message);
+        });
+
+        if (this.state.user) {
+            socket.emit('onlineUser', this.state.user);
+        }
+
+        socket.on('onlineUser', user => {
+            this.handleOnlineUser(user);
+        });
+    }
+
+    componentWillUnmount() {
+        this.handleLogout();
+    }
 
     render() {
         return (
