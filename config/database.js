@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 
-mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-});
+mongoose
+    .connect(process.env.DATABASE_URL || db, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true
+    })
+    .then(() => console.log('mongo working'))
+    .catch(err => console.log(err));
 
 db.on('connected', function() {
     console.log(
