@@ -35,7 +35,6 @@ class App extends Component {
     };
 
     handleLogout = () => {
-        this.handleOfflineUser();
         userService.logout();
         this.setState({
             user: userService.getUser(),
