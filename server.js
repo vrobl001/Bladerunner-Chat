@@ -39,8 +39,8 @@ app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-const port = process.env.PORT || 3001;
-const socketPort = process.env.PORT || 8080;
+const port = process.env.PORT || '3001';
+const socketPort = process.env.PORT || '8080';
 
 http.listen(socketPort, () => {
     console.log(`Socket.io is listening on port ${socketPort}`);
