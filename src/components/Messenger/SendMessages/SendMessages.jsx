@@ -16,7 +16,7 @@ class SendMessages extends Component {
 
     handleSocket() {
         if (!socket) {
-            socket = io(':5000');
+            socket = io(':80');
         }
     }
 
