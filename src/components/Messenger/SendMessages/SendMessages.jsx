@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import messageService from '../../../utils/messageService';
 import styles from './SendMessages.module.css';
-import openSocket from 'socket.io-client';
 import Paper from '@material-ui/core/Paper';
-const socket = openSocket('http://localhost:9000');
+import io from 'socket.io-client';
+const socket = io();
 
 class SendMessages extends Component {
     state = this.getInitialState();
