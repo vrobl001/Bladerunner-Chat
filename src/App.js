@@ -27,9 +27,12 @@ class App extends Component {
     };
 
     handleSignupOrLogin = () => {
-        this.setState({ user: userService.getUser() }, () => {
-            this.handleGetMessages();
-        });
+        this.setState(
+            { user: userService.getUser(), chatTopic: 'All Chat' },
+            () => {
+                this.handleGetMessages();
+            }
+        );
     };
     handleLogout = () => {
         userService.logout();
