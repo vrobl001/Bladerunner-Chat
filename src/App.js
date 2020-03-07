@@ -75,10 +75,6 @@ class App extends Component {
         }
     }
 
-    componentWillUnmount() {
-        this.handleLogout();
-    }
-
     render() {
         return (
             <div className='App-outer-container'>
