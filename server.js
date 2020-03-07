@@ -39,13 +39,13 @@ app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-const port = process.env.PORT || '3001';
-const socketPort = '80';
-
-app.listen(port, function() {
-    console.log(`Express is listening on port: ${port}`);
-});
+const port = process.env.PORT || 3001;
+const socketPort = 80;
 
 http.listen(socketPort, () => {
     console.log(`Socket.io is listening on port ${socketPort}`);
+});
+
+app.listen(port, function() {
+    console.log(`Express is listening on port: ${port}`);
 });
