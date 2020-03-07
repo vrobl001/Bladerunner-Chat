@@ -16,7 +16,7 @@ import './App.css';
 import userService from './utils/userService';
 
 import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:80');
+const socket = openSocket('https://blade-runner-chat.herokuapp.com/chatrooms');
 
 class App extends Component {
     state = {
