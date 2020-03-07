@@ -3,7 +3,7 @@ import messageService from '../../../utils/messageService';
 import styles from './SendMessages.module.css';
 import Paper from '@material-ui/core/Paper';
 import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:5000');
+const socket = openSocket('https://blade-runner-chat.herokuapp.com/chatrooms');
 
 class SendMessages extends Component {
     state = this.getInitialState();
