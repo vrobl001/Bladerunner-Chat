@@ -15,8 +15,8 @@ import Signup from './pages/Signup/Signup';
 import './App.css';
 import userService from './utils/userService';
 
-import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:9000');
+import io from 'socket.io-client';
+const socket = io();
 
 class App extends Component {
     state = {
