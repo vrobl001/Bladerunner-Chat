@@ -3,7 +3,7 @@ import messageService from '../../../utils/messageService';
 import styles from './SendMessages.module.css';
 import Paper from '@material-ui/core/Paper';
 import io from 'socket.io-client';
-let socket;
+let socket = io(':80');
 
 class SendMessages extends Component {
     state = this.getInitialState();
@@ -12,19 +12,6 @@ class SendMessages extends Component {
             name: this.props.user.name,
             msg: ''
         };
-    }
-
-    handleSocket() {
-        if (!socket) {
-            socket = io(':80');
-        }
-    }
-
-    componentDidMount() {
-        this.handleSocket();
-        socket.on('sendMessages', data => {
-            console.log(data);
-        });
     }
 
     isMessageValid = () => {

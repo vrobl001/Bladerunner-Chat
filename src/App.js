@@ -16,7 +16,7 @@ import './App.css';
 import userService from './utils/userService';
 
 import io from 'socket.io-client';
-let socket;
+let socket = io(':80');
 
 class App extends Component {
     state = {
@@ -81,15 +81,7 @@ class App extends Component {
         this.setState({ messages });
     };
 
-    handleSocket() {
-        if (!socket) {
-            socket = io(':80');
-        }
-    }
-
     componentDidMount() {
-        this.handleSocket();
-
         this.handleGetMessages();
 
         socket.on('sendMessages', message => {

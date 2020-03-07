@@ -22,8 +22,6 @@ io.on('connection', socket => {
     });
 });
 
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
-
 require('dotenv').config();
 require('./config/database');
 
@@ -42,7 +40,7 @@ app.get('/*', function(req, res) {
 });
 
 const port = process.env.PORT || '3001';
-const socketPort = process.env.PORT || '80';
+const socketPort = '80';
 
 app.listen(port, function() {
     console.log(`Express is listening on port: ${port}`);
