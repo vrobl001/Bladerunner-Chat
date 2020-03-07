@@ -8,10 +8,10 @@
 
 ## Technologies Used
 
--   ### **M**ongoose
--   ### **E**xpress
--   ### **R**eact
--   ### **N**ode
+-   **M** ongoose
+-   **E** xpress
+-   **R** eact
+-   **N** ode
 -   bCrypt
 -   JWT
 -   Socket io
