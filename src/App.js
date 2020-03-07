@@ -78,6 +78,10 @@ class App extends Component {
         }
     }
 
+    componentWillMount() {
+        this.handleLogout();
+    }
+
     render() {
         return (
             <div className='App-outer-container'>
