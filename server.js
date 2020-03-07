@@ -9,13 +9,12 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 io.on('connection', socket => {
-    socket.on('newUser', user => {
-        console.log('this person is logged on ', user);
-        io.emit('newUser', user);
+    socket.on('onlineUser', user => {
+        io.emit('onlineUser', user);
     });
 
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
+    socket.on('offlineUser', user => {
+        io.emit('offlineUser', user);
     });
 
     socket.on('sendMessages', messages => {
