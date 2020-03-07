@@ -10,6 +10,8 @@
         rgba(64, 64, 64, 1) 100%
     );
     color: white;
+    font-weight: bold;
+    font-size: 3rem;
     box-shadow: 2px 5px 10px 0px black;
 }
 
@@ -20,7 +22,7 @@
 
 .chatNav ul li {
     font-family: 'Orbitron';
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     list-style: none;
     margin-top: 2rem;
     text-align: start;
