@@ -45,20 +45,6 @@ class App extends Component {
         });
     };
 
-    handleOnlineUser = () => {
-        const onlineUser = this.state.user;
-        const onlineUserUpdate = [...this.state.online, onlineUser];
-        this.setState({ online: onlineUserUpdate });
-    };
-
-    handleOfflineUser = () => {
-        const usersStillOn = this.state.online.filter(name => {
-            return name.name !== userService.getUser().name;
-        });
-        this.setState({ online: usersStillOn });
-        socket.emit('offlineUser', usersStillOn);
-    };
-
     handleGetMessages = async () => {
         if (userService.getUser()) {
             const allMessages = await messageService.retrieveMessages();
@@ -86,14 +72,6 @@ class App extends Component {
 
         socket.on('sendMessages', message => {
             this.handleUpdateMessages(message);
-        });
-
-        if (this.state.user) {
-            socket.emit('onlineUser', this.state.user);
-        }
-
-        socket.on('onlineUser', user => {
-            this.handleOnlineUser(user);
         });
     }
 
