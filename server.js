@@ -22,8 +22,8 @@ io.on('connection', socket => {
     });
 });
 
-http.listen(5000, () => {
-    console.log('Socket.io is listening on port 5000');
+http.listen(80, () => {
+    console.log('Socket.io is listening on port 80');
 });
 
 require('dotenv').config();
