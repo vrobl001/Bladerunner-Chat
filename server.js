@@ -5,8 +5,8 @@ const path = require('path');
 
 const app = express();
 
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
 io.on('connection', socket => {
     socket.on('onlineUser', user => {
@@ -20,10 +20,6 @@ io.on('connection', socket => {
     socket.on('sendMessages', messages => {
         io.emit('sendMessages', messages);
     });
-});
-
-http.listen(5000, () => {
-    console.log('Socket.io is listening on port 5000');
 });
 
 require('dotenv').config();
@@ -45,6 +41,6 @@ app.get('/*', function(req, res) {
 
 const port = process.env.PORT || 3001;
 
-app.listen(port, function() {
-    console.log(`Express is listening on port: ${port}`);
+server.listen(port, () => {
+    console.log(`Socket.io is listening on port ${port}`);
 });
