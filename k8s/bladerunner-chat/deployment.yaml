@@ -22,4 +22,6 @@ spec:
         - name: DANGEROUSLY_DISABLE_HOST_CHECK
           value: "true"
         - name: DATABASE_URL
-          value: mongodb://mongo-service/Highscores?retryWrites=true&w=majority
+          value: mongodb://mongo-service/Messages?retryWrites=true&w=majority
+        - name: SECRET
+          value: xjlcvhbxlcjvbh
