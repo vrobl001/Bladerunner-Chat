@@ -1,4 +1,15 @@
-FROM node:13.3.0-alpine3.10
-COPY ./package.json .
+FROM node:14.4.0-alpine3.10
+
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package*.json ./
+
+RUN npm install
+
 COPY . .
-CMD [ "npm", "start" ]
+
+RUN npm run build
+
+CMD ["npm", "start"]
