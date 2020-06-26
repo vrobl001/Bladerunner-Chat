@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bladerunner-chat-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+      - name: bladerunner-chat
+        image: vrobl001/bladerunner-chat:latest
+        resources:
+        ports:
+          - containerPort: 3000
+        env:
+        - name: DANGEROUSLY_DISABLE_HOST_CHECK
+          value: "true"
+        - name: DATABASE_URL
+          value: mongodb://mongo-service/Highscores?retryWrites=true&w=majority

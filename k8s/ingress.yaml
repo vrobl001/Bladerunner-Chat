@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+spec:
+  tls:
+  - hosts:
+    - bladerunner-chat.localhost
+  rules:
+  - host: bladerunner-chat.localhost
+    http:
+      paths:
+      - backend:
+          serviceName: bladerunner-chat-service
+          servicePort: 3000
