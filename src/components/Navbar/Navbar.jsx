@@ -1,39 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
-
 import styles from './Navbar.module.css';
 
-const Navbar = props => {
-    const conditionalUI = userService.getUser() ? (
-        <>
-            <li>
-                <Link to='/chatrooms'>Chat Rooms</Link>
-            </li>
-            <li>
-                <Link to='' onClick={props.handleLogout}>
-                    Logout
-                </Link>
-            </li>
-        </>
-    ) : (
-        <>
-            <li>
-                <Link to='/login'>Login</Link>
-            </li>
-            <li>
-                <Link to='signup'>Signup</Link>
-            </li>
-        </>
-    );
-    return (
-        <nav className={styles.navbar}>
-            <Link to='/'>
-                <h1>Blade Runner Chat</h1>
-            </Link>
-            <ul>{conditionalUI}</ul>
-        </nav>
-    );
-};
+export default function Navbar(props) {
+  const conditionalUI = userService.getUser() ? (
+    <div className={styles.rightNav}>
+      <p>
+        Welcome
+        <span>{props.user.name}</span>!
+      </p>
 
-export default Navbar;
+      <li>
+        <Link to='/login' onClick={props.handleLogout}>
+          Log out
+        </Link>
+      </li>
+    </div>
+  ) : (
+    <div className={styles.rightNav}>
+      <li>
+        <Link to='/login'>Log in</Link>
+      </li>
+    </div>
+  );
+  return (
+    <nav className={styles.navbar}>
+      <div className={styles.logo}>
+        <i className='material-icons' onClick={props.handleShowSidebar}>
+          menu
+        </i>
+        <Link to='/' onClick={props.handleActiveApp}>
+          <h1>Bladerunner Chat</h1>
+        </Link>
+      </div>
+      <ul>{conditionalUI}</ul>
+    </nav>
+  );
+}
