@@ -8,18 +8,10 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-io.on('connection', socket => {
-    socket.on('onlineUser', user => {
-        io.emit('onlineUser', user);
-    });
-
-    socket.on('offlineUser', user => {
-        io.emit('offlineUser', user);
-    });
-
-    socket.on('sendMessages', messages => {
-        io.emit('sendMessages', messages);
-    });
+io.on('connection', (socket) => {
+  socket.on('sendMessages', (messages) => {
+    io.emit('sendMessages', messages);
+  });
 });
 
 require('dotenv').config();
@@ -35,12 +27,12 @@ app.use(require('./config/auth'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/messages', require('./routes/api/messages'));
 
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 const port = process.env.PORT || 3001;
 
 server.listen(port, () => {
-    console.log(`Socket.io is listening on port ${port}`);
+  console.log(`Socket.io is listening on port ${port}`);
 });
