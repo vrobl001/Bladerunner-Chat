@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ChatRooms.module.css';
 
-const ChatRooms = (props) => {
+export default function ChatRooms(props) {
   const allChatRooms = props.chatRooms.map((app, idx) => (
     <li key={idx} onClick={props.handleUpdateChatTopic}>
       <Link
@@ -20,6 +20,4 @@ const ChatRooms = (props) => {
   ));
 
   return <div className={styles.chatRoomsContainer}>{allChatRooms}</div>;
-};
-
-export default ChatRooms;
+}
