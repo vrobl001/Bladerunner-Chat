@@ -8,32 +8,46 @@
 
 ## Technologies Used
 
--   **M** ongoose
--   **E** xpress
--   **R** eact
--   **N** ode
--   bCrypt
--   JWT
--   Socket io
--   Heroku
+- **M** ongoose
+- **E** xpress
+- **R** eact
+- **N** ode
+- bCrypt
+- JWT
+- Socket io
+- Heroku
 
 ## Getting Started
 
--   Trello Board:
-    https://trello.com/b/UwB1l4oc/code-bounty
+- Trello Board:
+  https://trello.com/b/UwB1l4oc/code-bounty
 
--   GitHub Repo:
-    https://github.com/vrobl001/Bladerunner-Chat
+- GitHub Repo:
+  https://github.com/vrobl001/Bladerunner-Chat
 
--   Deployed Heroku:
-    https://blade-runner-chat.herokuapp.com/
+- Deployed Heroku:
+  https://blade-runner-chat.herokuapp.com/
 
-## Unsolved Problems
+## How to Install
 
--   Getting socket to work on Heroku
+- npm i
+- npm run build
+- npm start
+
+## Screenshots
+
+![Alt text](/public/screenshots/homepage.jpg)
+![Alt text](/public/screenshots/login.jpg)
+![Alt text](/public/screenshots/signup.jpg)
+![Alt text](/public/screenshots/chat.jpg)
+![Alt text](/public/screenshots/deliverables.jpg)
 
 ## Future Enhancements
 
--   Display user online status
--   Ability to send personal messages
--   Emojis
+- Display user online status
+- Ability to send personal messages
+- Emojis
+
+## Authors
+
+- Vincent Robles
