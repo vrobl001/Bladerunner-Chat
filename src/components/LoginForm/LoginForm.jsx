@@ -1,87 +1,88 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
-
 import styles from './LoginForm.module.css';
 
-class LoginForm extends Component {
-    state = this.getInitialState();
+export default function LoginForm(props) {
+  const [form, setState] = useState({
+    email: '',
+    password: '',
+    error: '',
+  });
 
-    getInitialState() {
-        return {
-            email: '',
-            password: '',
-            error: ''
-        };
+  const handleChange = (e) => {
+    setState({
+      ...form,
+      error: '',
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!isFormValid()) return;
+    try {
+      const { email, password } = form;
+      await userService.login({ email, password });
+      props.handleSignupOrLogin();
+      props.history.push('/');
+    } catch (error) {
+      setState({
+        ...form,
+        email: '',
+        password: '',
+        error: error.message,
+      });
     }
+  };
 
-    isFormValid = () => {
-        return this.state.email && this.state.password;
-    };
+  const isFormValid = () => {
+    return form.email && form.password;
+  };
 
-    handleChange = e => {
-        this.setState({
-            error: '',
-            [e.target.name]: e.target.value
-        });
-    };
+  return (
+    <div className={styles.loginForm}>
+      {form.error && <p>{form.error}</p>}
+      <form onSubmit={handleSubmit}>
+        <fieldset>
+          <legend>Log in to your account</legend>
 
-    handleSubmit = async e => {
-        e.preventDefault();
-        if (!this.isFormValid()) return;
-        try {
-            const { email, password } = this.state;
-            await userService.login({ email, password });
-            this.setState(this.getInitialState(), () => {
-                this.props.handleSignupOrLogin();
-                this.props.history.push('/chatrooms');
-            });
-        } catch (error) {
-            this.setState({
-                email: '',
-                password: '',
-                error: error.message
-            });
-        }
-    };
+          <div className={styles.inputField}>
+            <i className='material-icons'>email</i>
+            <input
+              name='email'
+              type='email'
+              value={form.email}
+              placeholder='Full Name'
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor='email'>Email</label>
+          </div>
 
-    render() {
-        return (
-            <section className={styles.section}>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.handleSubmit}>
-                    <fieldset>
-                        {!this.isFormValid() ? (
-                            <legend>Login</legend>
-                        ) : (
-                            <legend className={styles.isValid}>Login</legend>
-                        )}
+          <div className={styles.inputField}>
+            <i className='material-icons'>lock</i>
+            <input
+              id='signupPassword'
+              name='password'
+              type='password'
+              placeholder='Full Name'
+              minLength='8'
+              onChange={handleChange}
+              value={form.password}
+              required
+            />
+            <label htmlFor='password'>Password</label>
+          </div>
 
-                        <label htmlFor='email'>Email</label>
-                        <input
-                            id='email'
-                            name='email'
-                            type='email'
-                            value={this.state.email}
-                            onChange={this.handleChange}
-                        />
-
-                        <label htmlFor='password'>Password</label>
-                        <input
-                            id='password'
-                            name='password'
-                            type='password'
-                            value={this.state.password}
-                            onChange={this.handleChange}
-                        />
-
-                        <button disabled={!this.isFormValid()} type='submit'>
-                            Login
-                        </button>
-                    </fieldset>
-                </form>
-            </section>
-        );
-    }
+          <div className={styles.loginButton}>
+            <button disabled={!isFormValid()} type='submit'>
+              Log In
+            </button>
+          </div>
+        </fieldset>
+      </form>
+      <Link to='/signup'>Create account</Link>
+    </div>
+  );
 }
-
-export default LoginForm;
