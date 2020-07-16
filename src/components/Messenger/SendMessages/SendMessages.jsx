@@ -1,62 +1,59 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import messageService from '../../../utils/messageService';
 import styles from './SendMessages.module.css';
-import Paper from '@material-ui/core/Paper';
-import openSocket from 'socket.io-client';
-const socket = openSocket();
 
-class SendMessages extends Component {
-    state = this.getInitialState();
-    getInitialState() {
-        return {
-            name: this.props.user.name,
-            msg: ''
-        };
-    }
+export default function SendMessages(props) {
+  const [form, setState] = useState({
+    name: props.user.name,
+    chatTopic: props.chatTopic,
+    msg: '',
+  });
 
-    isMessageValid = () => {
-        return this.state.name && this.state.msg;
-    };
+  const handleChange = (e) => {
+    setState({
+      ...form,
+      chatTopic: props.chatTopic,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    handleChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
+  const handleSubmit = async (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      if (!isMessageValid()) return;
+      try {
+        const { name, chatTopic, msg } = form;
+        await messageService.sendMessages({ name, chatTopic, msg });
+        setState({
+          ...form,
+          msg: '',
         });
-    };
-
-    handleSubmit = async e => {
-        e.preventDefault();
-        if (!this.isMessageValid()) return;
-        try {
-            const { name, msg } = this.state;
-            const chatTopic = this.props.chatTopic;
-            socket.emit('sendMessages', { name, msg, chatTopic });
-            await messageService.sendMessages({ chatTopic, name, msg });
-            this.setState(this.getInitialState());
-        } catch (error) {
-            this.setState({
-                chatTopic: 'Test Topic',
-                name: 'Vincent',
-                msg: ''
-            });
-        }
-    };
-
-    render() {
-        return (
-            <Paper className={styles.wrContainer} elevation={10}>
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        id='msg'
-                        name='msg'
-                        type='text'
-                        value={this.state.msg}
-                        onChange={this.handleChange}
-                    />
-                </form>
-            </Paper>
-        );
+      } catch (error) {
+        setState({
+          ...form,
+          msg: '',
+        });
+      }
     }
-}
+  };
 
-export default SendMessages;
+  const isMessageValid = () => {
+    return form.name && form.msg;
+  };
+
+  return (
+    <div className={styles.sendMessageContainer}>
+      <form className={styles.formContainer}>
+        <textarea
+          onKeyPress={handleSubmit}
+          className={styles.textArea}
+          id='msg'
+          name='msg'
+          type='text'
+          value={form.msg}
+          onChange={handleChange}
+        />
+      </form>
+    </div>
+  );
+}
