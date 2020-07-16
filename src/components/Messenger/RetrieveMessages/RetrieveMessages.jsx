@@ -1,54 +1,30 @@
 import React from 'react';
 import styles from './RetrieveMessages.module.css';
 
-const RetrieveMessages = props => {
-    const filteredMessages = props.messages.filter(message => {
-        return message.chatTopic === props.chatTopic;
-    });
-    const mappedFilteredMessages = filteredMessages.map((message, idx) =>
-        props.user.name === message.name ? (
-            <div className={styles.userContainer} key={idx}>
-                <div className={styles.displayedMessages}>
-                    <div>
-                        <p className={styles.rmChatTopic}>
-                            {message.chatTopic}
-                        </p>
-                    </div>
-                    <div className={styles.nameAndMessage}>
-                        <p className={styles.rmUser}>{message.name}</p>
-                        <p className={styles.rmMessage}>{message.msg}</p>
-                    </div>
-                </div>
-            </div>
-        ) : (
-            <div key={idx}>
-                <div className={styles.displayedMessages}>
-                    <div>
-                        <p className={styles.rmChatTopic}>
-                            {message.chatTopic}
-                        </p>
-                    </div>
-                    <div className={styles.nameAndMessage}>
-                        <p className={styles.rmUser}>{message.name}</p>
-                        <p className={styles.rmMessage}>{message.msg}</p>
-                    </div>
-                </div>
-            </div>
-        )
-    );
-    return (
-        <div className={styles.rmContainer}>
-            {filteredMessages.length ? (
-                <div>
-                    <div>{mappedFilteredMessages}</div>
-                </div>
-            ) : (
-                <h1 className={styles.noMessage}>
-                    Be the first to start a conversation!
-                </h1>
-            )}
+export default function RetrieveMessages(props) {
+  const filteredMessages = props.messages.filter((message) => {
+    return message.chatTopic === props.chatTopic;
+  });
+  const messages = filteredMessages.map((message, idx) =>
+    props.user.name === message.name ? (
+      <div className={styles.userMessageContainer} key={idx}>
+        <h5>{message.name}</h5>
+        <div className={styles.userMessage}>
+          <p>{message.msg}</p>
         </div>
-    );
-};
-
-export default RetrieveMessages;
+      </div>
+    ) : (
+      <div className={styles.messageContainer} key={idx}>
+        <h5>{message.name}</h5>
+        <div className={styles.message}>
+          <p>{message.msg}</p>
+        </div>
+      </div>
+    )
+  );
+  return (
+    <div className={styles.retrieveMessageOuterContainer}>
+      <div className={styles.retrieveMessageInnerContainer}>{messages}</div>
+    </div>
+  );
+}
