@@ -1,117 +1,123 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import userService from '../../utils/userService';
 import styles from './SignupForm.module.css';
 
-class SignupForm extends Component {
-    state = this.getInitialState();
+export default function SignupForm(props) {
+  const [form, setState] = useState({
+    name: '',
+    email: '',
+    password: '',
+    passwordConf: '',
+    error: '',
+  });
 
-    getInitialState() {
-        return {
-            name: '',
-            email: '',
-            password: '',
-            passwordConf: '',
-            error: ''
-        };
-    }
+  const handleChange = (e) => {
+    setState({
+      ...form,
+      error: '',
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    isFormValid = () => {
-        return (
-            this.state.name &&
-            this.state.email &&
-            this.state.password &&
-            this.state.password === this.state.passwordConf
-        );
-    };
-
-    handleChange = e => {
-        this.setState({
-            error: '',
-            ...{ [e.target.name]: e.target.value }
+  const handlePasswordMatch = () => {
+    if (form.password.length >= 8 && form.passwordConf.length === form.password.length) {
+      if (form.password !== form.passwordConf) {
+        return setState({
+          ...form,
+          passwordConf: '',
+          error: 'Passwords do not match!',
         });
-    };
-
-    handleSubmit = async e => {
-        e.preventDefault();
-        if (!this.isFormValid()) return;
-
-        try {
-            const { name, email, password } = this.state;
-            await userService.signup({ name, email, password });
-            this.setState(this.getInitialState(), () => {
-                this.props.handleSignupOrLogin();
-                this.props.history.push('/');
-            });
-        } catch (error) {
-            this.setState({
-                name: '',
-                email: '',
-                password: '',
-                passwordConf: '',
-                error: error.message
-            });
-        }
-    };
-
-    render() {
-        return (
-            <section className={styles.section}>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.handleSubmit}>
-                    <fieldset>
-                        {!this.isFormValid() ? (
-                            <legend>Signup Form</legend>
-                        ) : (
-                            <legend className={styles.isValid}>
-                                Signup Form
-                            </legend>
-                        )}
-                        <label htmlFor='name'>Full Name</label>
-                        <input
-                            id='name'
-                            name='name'
-                            type='text'
-                            value={this.state.name}
-                            onChange={this.handleChange}
-                        />
-
-                        <label htmlFor='email'>Email</label>
-                        <input
-                            id='email'
-                            name='email'
-                            type='email'
-                            value={this.state.email}
-                            onChange={this.handleChange}
-                        />
-
-                        <label htmlFor='password'>Password</label>
-                        <input
-                            id='password'
-                            name='password'
-                            type='password'
-                            value={this.state.password}
-                            onChange={this.handleChange}
-                        />
-
-                        <label htmlFor='passwordConf'>
-                            Password Confirmation
-                        </label>
-                        <input
-                            id='passwordConf'
-                            name='passwordConf'
-                            type='password'
-                            value={this.state.passwordConf}
-                            onChange={this.handleChange}
-                        />
-
-                        <button disabled={!this.isFormValid()} type='submit'>
-                            Submit
-                        </button>
-                    </fieldset>
-                </form>
-            </section>
-        );
+      }
     }
-}
+  };
 
-export default SignupForm;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!isFormValid()) return;
+    try {
+      const { name, email, password } = form;
+      await userService.signup({ name, email, password });
+      props.handleSignupOrLogin();
+      props.history.push('/');
+    } catch (error) {
+      setState({
+        ...form,
+        email: '',
+        error: error.message,
+      });
+    }
+  };
+
+  const isFormValid = () => {
+    handlePasswordMatch();
+    return form.name && form.email && form.password && form.passwordConf && form.password === form.passwordConf;
+  };
+
+  return (
+    <div className={styles.signupForm}>
+      {form.error && <p>{form.error}</p>}
+      <form onSubmit={handleSubmit}>
+        <fieldset>
+          <legend>Sign up</legend>
+
+          <div className={styles.inputField}>
+            <i className='material-icons'>person</i>
+            <input name='name' type='text' value={form.name} placeholder='Name' onChange={handleChange} required />
+            <label htmlFor='name'>Name</label>
+          </div>
+
+          <div className={styles.inputField}>
+            <i className='material-icons'>email</i>
+            <input
+              name='email'
+              type='email'
+              value={form.email}
+              placeholder='Full Name'
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor='email'>Email</label>
+          </div>
+
+          <div className={styles.inputField}>
+            <i className='material-icons'>lock</i>
+            <input
+              id='signupPassword'
+              name='password'
+              type='password'
+              placeholder='Full Name'
+              minLength='8'
+              onChange={handleChange}
+              value={form.password}
+              required
+            />
+            <label htmlFor='password'>Password</label>
+          </div>
+
+          <div className={styles.inputField}>
+            <i className='material-icons'>lock</i>
+            <input
+              id='signupPasswordConf'
+              name='passwordConf'
+              type='password'
+              placeholder='Full Name'
+              minLength='8'
+              value={form.passwordConf}
+              onChange={handleChange}
+              required
+            />
+            <label htmlFor='passwordConf'>Confirm Password</label>
+          </div>
+
+          <div className={styles.signupButton}>
+            <button disabled={!isFormValid()} type='submit'>
+              Submit
+            </button>
+          </div>
+        </fieldset>
+      </form>
+      <Link to='/login'>Already have account</Link>
+    </div>
+  );
+}
