@@ -1,100 +1,146 @@
-.rmContainer {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    display: flex;
-    height: 40rem;
-    background: rgb(0, 0, 0);
-    background: rgb(0, 0, 0);
-    background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.8) 0%,
-        rgba(3, 0, 25, 0.8) 35%,
-        rgba(7, 0, 57, 0.8) 75%,
-        rgba(9, 0, 74, 0.8) 81%,
-        rgba(13, 0, 112, 0.8) 94%,
-        rgba(20, 0, 176, 0.8) 100%
-    );
-    overflow-y: auto;
-    flex-direction: column-reverse;
+.retrieveMessageOuterContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  height: 35rem;
+  margin: auto;
+  overflow-y: auto;
+  padding: 0 1rem;
+  background-color: rgba(244, 245, 247, 0.75);
 }
 
-.displayedMessages {
-    border-radius: 5px;
-    box-shadow: 2px 5px 10px 0px black;
-    width: 40%;
-    background-color: rgba(255, 255, 255, 0.9);
-    flex-direction: column;
-    margin: 1rem;
-
-    padding: 0;
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.rmChatTopic {
-    box-shadow: inset 0 0 1.5px white;
-    margin: 0;
-    color: white;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    width: 100%;
-    font-family: 'Lobster', cursive;
-    justify-content: center;
-    display: flex;
-    background-color: black;
-    font-size: 1.6rem;
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .userMessage,
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .message {
+  border-radius: 0.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 5.5rem;
+  max-width: 20rem;
+  min-width: 10rem;
+  padding: 0rem 1.5rem;
+  position: relative;
 }
 
-.rmMessage {
-    margin: 5px;
-    overflow: hidden;
-    width: 80%;
-    font-family: 'Roboto', 'san-serif';
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    border-left: 1px solid rgba(0, 0, 0, 0.6);
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .userMessage:after,
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .message:after {
+  content: '';
+  border-style: solid;
+  display: block;
+  position: absolute;
+  top: 1.75rem;
 }
 
-.rmUser {
-    display: block;
-    font-family: 'Orbitron';
-    font-weight: bold;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    text-align: center;
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .userMessageContainer,
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .messageContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2rem;
 }
 
-.nameAndMessage {
-    display: flex;
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .userMessageContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: auto;
 }
 
-.userContainer {
-    display: flex;
-    justify-content: flex-end;
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .userMessageContainer h5 {
+  margin-left: auto;
+  color: rgba(66, 82, 110, 0.9);
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.5rem;
 }
 
-.noMessage {
-    display: flex;
-    justify-content: center;
-    font-family: 'Roboto', 'san-serif';
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .userMessageContainer .userMessage {
+  background: rgba(68, 126, 215, 0.5);
+  -webkit-box-shadow: -0.2rem 0.2rem 0.2rem 0rem rgba(66, 82, 110, 0.8);
+          box-shadow: -0.2rem 0.2rem 0.2rem 0rem rgba(66, 82, 110, 0.8);
+  text-align: left;
+}
+
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .userMessageContainer .userMessage:after {
+  border-color: transparent rgba(68, 126, 215, 0.5);
+  border-width: 1rem 0 1rem 1rem;
+  right: -1rem;
+}
+
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .messageContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: auto;
+}
+
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .messageContainer h5 {
+  color: rgba(66, 82, 110, 0.9);
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .messageContainer .message {
+  background: rgba(82, 68, 171, 0.5);
+  -webkit-box-shadow: 0.2rem 0.2rem 0.2rem 0rem rgba(66, 82, 110, 0.8);
+          box-shadow: 0.2rem 0.2rem 0.2rem 0rem rgba(66, 82, 110, 0.8);
+}
+
+.retrieveMessageOuterContainer .retrieveMessageInnerContainer .messageContainer .message:after {
+  border-color: transparent rgba(82, 68, 171, 0.5);
+  border-width: 1rem 1rem 1rem 0;
+  left: -1rem;
 }
 
 ::-webkit-scrollbar {
-    width: 15px;
+  width: 1rem;
 }
 
 ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 7px;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: inset 0 0 0.25rem rgba(66, 82, 110, 0.5);
+          box-shadow: inset 0 0 0.25rem rgba(66, 82, 110, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-    box-shadow: inset 2px 2px 3px darkgray;
-    size: 10px;
-    background: white;
-    border-radius: 7px;
-    border: 1px solid black;
+  background: #ebecf0;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: inset 0.1rem 0.1rem 0.2rem rgba(66, 82, 110, 0.75);
+          box-shadow: inset 0.1rem 0.1rem 0.2rem rgba(66, 82, 110, 0.75);
+  size: 0.75rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    box-shadow: inset 2px 2px 3px white;
-    background: darkgray;
+  background: rgba(66, 82, 110, 0.2);
+  -webkit-box-shadow: inset 0.1rem 0.1rem 0.2rem #42526e;
+          box-shadow: inset 0.1rem 0.1rem 0.2rem #42526e;
 }
+/*# sourceMappingURL=RetrieveMessages.module.css.map */

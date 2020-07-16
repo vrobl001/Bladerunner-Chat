@@ -1,0 +1,19 @@
+.chatOuterContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 2.5rem;
+  align-items: center;
+  h2 {
+    color: rgb(66, 82, 110);
+    font-family: 'Poppins', sans-serif;
+  }
+  .chatInnerContainer {
+    border-radius: 0.5rem;
+    border: 1px solid rgba(66, 82, 110, 0.5);
+    box-shadow: 0rem 0.1rem 0.25rem 0rem rgb(66, 82, 110);
+    margin: auto;
+    padding: 1rem auto;
+    width: 40rem;
+  }
+}
