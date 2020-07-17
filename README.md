@@ -12,9 +12,10 @@
 - **E** xpress
 - **R** eact
 - **N** ode
+- Socket io
+- SCSS
 - bCrypt
 - JWT
-- Socket io
 - Heroku
 
 ## Getting Started
