@@ -18,13 +18,15 @@
 - JWT
 - Heroku
 
-## Getting Started
-
-- Trello Board:
-  https://trello.com/b/UwB1l4oc/code-bounty
+## Repos
 
 - GitHub Repo:
   https://github.com/vrobl001/Bladerunner-Chat
+
+- Docker Hub:
+  https://hub.docker.com/repository/docker/vrobl001/bladerunner-chat
+
+## Deployment
 
 - Deployed Heroku:
   https://blade-runner-chat.herokuapp.com/
