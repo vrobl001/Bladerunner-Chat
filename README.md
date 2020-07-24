@@ -1,10 +1,10 @@
 # Introduction
 
-    Welcome to Blade Runner Chat! Users will be able to sign up/ log in with authentication using bcrypt and JWT. Once on, users will be able to chat in real time using socket io! Messages will be conditionally rendered depending on what chat topic is currently selected.
+Welcome to Blade Runner Chat! Users will be able to sign up/ log in with authentication using bcrypt and JWT. Once on, users will be able to chat in real time using socket io! Messages will be conditionally rendered depending on what chat topic is currently selected.
 
-    Messages sent will persist to a database using MongoDB. This way, users can still engage in conversations at a later time.
+Messages sent will persist to a database using MongoDB. This way, users can still engage in conversations at a later time.
 
-    Everything is presented using React!
+Everything is presented using React!
 
 ## Technologies Used
 
